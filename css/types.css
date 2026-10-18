@@ -1,0 +1,50 @@
+/* =========================================================
+   فردية أم مجلس — two cards with "أو" between them.
+   ========================================================= */
+
+.types-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(16px, 3vw, 32px);
+  max-width: 980px;
+  margin-inline: auto;
+}
+.type-card {
+  display: flex; flex-direction: column; gap: 14px;
+  padding: clamp(24px, 3.5vw, 36px);
+  border-radius: var(--radius-lg);
+  background: var(--c-ground);
+  box-shadow: inset 0 0 0 1px var(--c-line);
+  transition: transform .45s var(--ease-out), box-shadow .45s ease;
+}
+.type-card:hover { transform: translateY(-8px); box-shadow: inset 0 0 0 1.5px var(--c-accent), 0 30px 50px -34px rgba(0, 0, 0, .45); }
+.type-card h3 { font-size: var(--fs-xl); }
+.type-card > p { color: var(--c-muted); }
+.type-card .ticks { margin-top: 6px; }
+
+.type-ic {
+  width: 60px; height: 60px;
+  display: grid; place-items: center;
+  border-radius: 20px;
+  background: var(--c-deep);
+  color: var(--c-accent-on-deep);
+}
+.type-ic svg { width: 28px; height: 28px; }
+.type-card--group .type-ic { background: var(--c-accent); color: var(--c-on-accent); }
+
+.types-or {
+  align-self: center;
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  font-family: var(--f-display); font-weight: 600;
+  background: var(--c-surface);
+  box-shadow: inset 0 0 0 1px var(--c-line), 0 10px 24px -16px rgba(0, 0, 0, .4);
+  color: var(--c-accent-text);
+}
+
+@media (max-width: 760px) {
+  .types-grid { grid-template-columns: 1fr; gap: 14px; }
+  .types-or { justify-self: center; width: 46px; height: 46px; margin-block: -6px; position: relative; z-index: 1; }
+}

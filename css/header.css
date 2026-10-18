@@ -1,0 +1,223 @@
+/* =========================================================
+   Header: transparent over the hero, solid after scrolling,
+   hides on scroll down and returns on scroll up.
+   ========================================================= */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  color: var(--c-on-deep);
+  transition: background-color .4s ease, box-shadow .4s ease, transform .5s var(--ease-out), color var(--t-theme) ease;
+}
+.site-header.is-solid {
+  background: color-mix(in srgb, var(--c-deep) 88%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .55);
+}
+.site-header.is-hidden { transform: translateY(-110%); }
+
+.header-inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+/* ---------- Brand ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+}
+.brand-mark {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  flex: none;
+  transition: transform .5s var(--ease-out);
+}
+.brand:hover .brand-mark { transform: rotate(-8deg) scale(1.06); }
+.brand-mark img,
+.brand-mark svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text .wordmark { font-size: 1.85rem; --wm-text: var(--c-on-deep); --wm-mark: var(--c-accent); }
+.brand-tagline { font-size: 0.72rem; color: var(--c-on-deep-muted); margin-top: 4px; letter-spacing: .02em; }
+
+/* ---------- Nav ---------- */
+.main-nav ul { display: flex; align-items: center; gap: 4px; }
+.main-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--c-on-deep);
+  border-radius: var(--radius-pill);
+  transition: color .25s ease;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 14px;
+  bottom: 8px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .45s var(--ease-out);
+}
+.main-nav a:hover { color: var(--c-accent-on-deep); }
+.main-nav a:hover::after,
+.main-nav a[aria-current="true"]::after { transform: scaleX(1); }
+
+.header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+.link-login {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 1.5px var(--c-line-on-deep);
+  transition: box-shadow .25s ease;
+}
+.link-login:hover { box-shadow: inset 0 0 0 1.5px var(--c-on-deep); }
+.header-actions .btn { min-height: 44px; padding: 0 20px; }
+
+/* ---------- Mobile: bottom tab bar (app-like) ---------- */
+.tabbar {
+  display: none;
+  position: fixed;
+  z-index: 55;
+  left: max(10px, env(safe-area-inset-left, 0px));
+  right: max(10px, env(safe-area-inset-right, 0px));
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  height: var(--tabbar-h);
+  padding: 0 6px;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--c-surface) 90%, transparent);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: 0 16px 34px -14px rgba(0, 0, 0, .45), inset 0 0 0 1px var(--c-line);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  transition: transform .45s var(--ease-out), background-color var(--t-theme) ease;
+}
+.tabbar.is-hidden { transform: translateY(calc(100% + 24px)); }
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-height: 52px;
+  justify-content: center;
+  border: 0;
+  background: none;
+  color: var(--c-muted);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .2s ease;
+}
+.tab svg { width: 23px; height: 23px; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+.tab[aria-current="page"], .tab[aria-expanded="true"] { color: var(--c-ink); }
+.tab[aria-current="page"] svg { transform: translateY(-2px) scale(1.12); }
+.tab:active svg { transform: scale(.85); }
+.tab-main {
+  justify-self: center;
+  width: 60px;
+  height: 60px;
+  margin-top: -30px;
+  border: 0;
+  border-radius: 20px;
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 14px 26px -8px color-mix(in srgb, var(--c-accent) 80%, transparent);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .2s var(--ease-out), background-color var(--t-theme) ease;
+}
+.tab-main:active { transform: scale(.9); }
+.tab-main svg { width: 28px; height: 28px; }
+
+/* full menu opened by the "المزيد" tab */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 54;
+  background: var(--c-deep);
+  color: var(--c-on-deep);
+  padding: calc(var(--header-h) + env(safe-area-inset-top, 0px) + 8px) max(24px, env(safe-area-inset-right, 0px)) calc(var(--tabbar-h) + 40px + env(safe-area-inset-bottom, 0px)) max(24px, env(safe-area-inset-left, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  clip-path: circle(0% at var(--origin-x, 10%) var(--origin-y, 95%));
+  visibility: hidden;
+  transition: clip-path .7s var(--ease-soft), visibility 0s linear .7s;
+}
+.mobile-menu.is-open {
+  clip-path: circle(150% at var(--origin-x, 10%) var(--origin-y, 95%));
+  visibility: visible;
+  transition: clip-path .7s var(--ease-soft), visibility 0s;
+}
+.mobile-menu ul { display: flex; flex-direction: column; }
+.mobile-menu li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+  font-family: var(--f-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--c-line-on-deep);
+}
+.mobile-menu li a svg { width: 22px; height: 22px; opacity: .6; }
+.mobile-menu .menu-actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.mobile-menu .menu-actions .btn { width: 100%; }
+
+@media (max-width: 1080px) {
+  :root { --tabbar-h: 68px; }
+  .main-nav, .header-actions { display: none; }
+  .tabbar { display: grid; }
+  body { padding-bottom: calc(var(--tabbar-h) + 20px + env(safe-area-inset-bottom, 0px)); }
+  .header-inner { justify-content: center; }
+}
+/* phones: the header is solid from the start, so iPhone Safari tints the
+   status-bar area with it instead of the light page colour (which was
+   covering the name), with a little extra room under the status bar */
+@media (max-width: 1080px) {
+  .site-header {
+    background: var(--c-deep);
+    padding-top: calc(env(safe-area-inset-top, 0px) + 6px);
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .55);
+  }
+}
+@media (max-width: 560px) {
+  :root { --header-h: 68px; }
+  .brand-mark { width: 46px; height: 46px; }
+  .brand-text .wordmark { font-size: 1.5rem; }
+}
+
+/* name/palette choice inside the "المزيد" menu (dark ground) */
+.mobile-menu .menu-brand { display: flex; flex-direction: column; gap: 14px; color: var(--c-on-deep); }
+.mobile-menu .switcher-label { color: var(--c-on-deep-muted); }
+.mobile-menu .seg { background: color-mix(in srgb, var(--c-on-deep) 10%, transparent); }
+.mobile-menu .seg button { color: var(--c-on-deep); }
+.mobile-menu .seg button[aria-pressed="true"] { background: var(--c-accent); color: var(--c-on-accent); }
+.mobile-menu .palette-option { color: var(--c-on-deep); box-shadow: inset 0 0 0 1px var(--c-line-on-deep); }
+.mobile-menu .palette-option[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--c-accent); }
+.mobile-menu .palette-option .sw i { box-shadow: 0 0 0 2px var(--c-deep); }

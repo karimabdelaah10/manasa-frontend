@@ -1,0 +1,82 @@
+/* =========================================================
+   كيف نعمل — four steps joined by a line that draws on scroll;
+   each badge lights up when the line reaches it.
+   ========================================================= */
+
+.steps-wrap { position: relative; }
+.steps {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 32px);
+  counter-reset: none;
+}
+.step { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.step h3 { font-size: var(--fs-lg); color: #fff; }
+.step p { font-size: var(--fs-sm); color: var(--c-on-deep-muted); max-width: 16rem; }
+
+.step-badge {
+  position: relative;
+  width: 76px; height: 76px;
+  display: grid; place-items: center;
+  margin-bottom: 6px;
+  transition: transform .5s cubic-bezier(.3, 1.6, .5, 1);
+}
+.step-badge svg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  fill: var(--c-deep-2);
+  stroke: var(--c-line-on-deep);
+  stroke-width: 3;
+  transition: fill .5s ease, stroke .5s ease;
+}
+.step-badge b {
+  position: relative;
+  font-family: var(--f-display);
+  font-size: 1.6rem;
+  color: var(--c-on-deep-muted);
+  transition: color .4s ease;
+}
+.step.is-on .step-badge { transform: scale(1.08) rotate(-8deg); }
+.step.is-on .step-badge svg { fill: var(--c-accent); stroke: var(--c-accent); }
+.step.is-on .step-badge b { color: var(--c-on-accent); }
+
+/* the line runs between the first and last badge centres */
+.steps-line {
+  position: absolute;
+  top: 37px;
+  right: 12.5%;
+  left: 12.5%;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--c-line-on-deep);
+}
+.steps-line i {
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: var(--c-accent);
+  transform-origin: right center;
+  transform: scaleX(0);
+}
+
+@media (max-width: 860px) {
+  .steps { grid-template-columns: 1fr; gap: 34px; }
+  .step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 18px; row-gap: 4px;
+    align-items: start;
+    text-align: start;
+  }
+  .step-badge { grid-row: 1 / span 2; width: 64px; height: 64px; margin: 0; }
+  .step-badge b { font-size: 1.35rem; }
+  .step h3 { padding-top: 6px; }
+  .step p { max-width: none; }
+  .steps-line {
+    top: 32px; bottom: 32px;
+    right: 30.5px; left: auto;
+    width: 3px; height: auto;
+  }
+  .steps-line i { transform-origin: center top; transform: scaleY(0); }
+}

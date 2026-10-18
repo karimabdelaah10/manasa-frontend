@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-palette="navy" data-brand="rattil">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2A44">
+  <title>رتّل — أكاديمية تحفيظ القرآن الكريم</title>
+  <meta name="description" content="أكاديمية أونلاين لتحفيظ القرآن الكريم للصغار والكبار، في حلقات فردية أو مجالس جماعية، مع تقرير وملاحظة من المعلّم بعد كل حلقة.">
+
+  <!-- apply the saved name/palette before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem('manasa:brand') || '{}');
+        if (s.palette) document.documentElement.dataset.palette = s.palette;
+        if (s.brand) document.documentElement.dataset.brand = s.brand;
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" type="image/png" href="images/brand/favicon.png">
+  <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
+
+  <link rel="preload" as="image" href="images/logo/academy-navy-nowave.webp">
+  <link rel="stylesheet" href="css/tokens.css?v=202610182315">
+  <link rel="stylesheet" href="css/base.css?v=202610182315">
+  <link rel="stylesheet" href="css/symbols.css?v=202610182315">
+  <link rel="stylesheet" href="css/header.css?v=202610182315">
+  <link rel="stylesheet" href="css/hero.css?v=202610182315">
+  <link rel="stylesheet" href="css/switcher.css?v=202610182315">
+  <link rel="stylesheet" href="css/slogan.css?v=202610182315">
+  <link rel="stylesheet" href="css/sections.css?v=202610182315">
+  <link rel="stylesheet" href="css/programs.css?v=202610182315">
+  <link rel="stylesheet" href="css/how.css?v=202610182315">
+  <link rel="stylesheet" href="css/family.css?v=202610182315">
+  <link rel="stylesheet" href="css/types.css?v=202610182315">
+  <link rel="stylesheet" href="css/teach.css?v=202610182315">
+  <link rel="stylesheet" href="css/faq.css?v=202610182315">
+  <link rel="stylesheet" href="css/cta.css?v=202610182315">
+</head>
+<body>
+
+  <!-- ===== Shared SVG symbols ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="uns-wordmark" viewBox="-10.7 -164.3 247.0 201.4"><path d="M58.4,0.0L50.6,-19.4L83.9,-19.4L76.2,-16.1Q74.6,-17.5 74.1,-20.8Q73.6,-24.1 73.6,-29.2L73.6,-58.4L95.5,-60.7L96.8,-60.7L96.8,-10.0L87.4,-19.4L120.7,-19.4L113.0,-16.2Q111.4,-17.6 110.8,-21.1Q110.3,-24.6 110.3,-29.8L110.3,-62.3L132.2,-64.6L133.6,-64.6L133.6,-10.0L124.1,-19.4L148.1,-19.4L148.1,-2.4L145.7,0.0ZM4.1,-0.1Q7.6,4.0 11.6,6.5Q15.6,9.1 19.8,10.2Q24.0,11.3 27.6,11.3Q31.2,11.3 33.5,10.1Q35.9,8.9 37.0,9.0L31.8,13.8Q33.7,11.2 35.0,6.3Q36.2,1.4 37.0,-4.6Q37.7,-10.6 37.7,-16.6Q37.7,-21.4 37.4,-26.8Q37.1,-32.2 36.7,-37.4Q36.4,-42.7 35.8,-47.2Q35.3,-51.7 34.8,-54.6L57.1,-56.8L58.4,-56.8Q59.4,-47.6 59.9,-41.2Q60.5,-34.8 60.7,-29.8Q61.0,-24.8 61.0,-19.9Q61.0,-6.2 58.1,3.4Q55.2,13.1 50.2,19.3Q45.1,25.4 38.3,28.3Q31.6,31.1 23.6,31.1Q17.3,31.1 12.1,29.4Q7.0,27.7 3.4,25.4Q-0.2,23.0 -2.3,21.1Q-4.4,19.2 -4.7,18.7L2.8,-0.1ZM143.3,0.0L143.3,-17.0L145.7,-19.4L168.2,-19.4L160.6,-16.2Q158.9,-17.5 158.3,-21.2Q157.8,-25.0 157.8,-30.2L157.8,-62.8L179.6,-64.9L181.1,-64.9L181.1,-22.7Q181.1,-20.3 181.1,-16.7Q181.2,-13.1 181.4,-9.5Q181.6,-6.0 182.0,-3.8L182.0,-2.9Q178.4,-1.4 173.4,-0.7Q168.4,0.0 160.8,0.0ZM199.2,-76.9L223.0,-79.2L223.4,-78.2Q223.0,-76.1 222.8,-72.8Q222.6,-69.6 222.5,-66.2Q222.5,-62.9 222.5,-60.5L222.5,0.0L199.2,0.0ZM195.6,-103.4Q195.6,-108.4 198.1,-112.3Q200.6,-116.3 205.3,-118.7Q209.9,-121.2 216.2,-121.2L223.9,-121.2L223.9,-120.0L219.8,-108.4L216.6,-108.4Q213.1,-108.4 210.7,-107.2Q208.3,-106.1 207.1,-101.9L206.8,-106.2Q207.8,-103.3 209.9,-102.2Q212.0,-101.2 214.9,-101.2L224.0,-101.2L224.0,-100.0L219.8,-88.4L211.3,-88.4Q206.9,-88.4 203.3,-90.5Q199.7,-92.5 197.6,-95.9Q195.6,-99.2 195.6,-103.4Z" style="fill:var(--wm-text, currentColor)"/><path d="M168.6,-102.8L173.2,-94.6L182.3,-97.2L179.7,-88.1L188.0,-83.5L179.7,-78.9L182.3,-69.8L173.2,-72.4L168.6,-64.1L164.0,-72.4L154.9,-69.8L157.5,-78.9L149.2,-83.5L157.5,-88.1L154.9,-97.2L164.0,-94.6ZM209.3,-133.4L215.0,-138.1Q214.3,-139.4 214.0,-140.9Q213.6,-142.3 213.6,-143.9Q213.6,-145.9 214.8,-147.9Q216.0,-149.9 218.4,-150.8L216.5,-150.6Q218.3,-150.5 219.4,-149.2Q220.6,-147.8 220.6,-145.9Q220.6,-143.6 218.9,-142.0Q217.2,-140.4 214.6,-139.7Q211.9,-139.0 208.9,-139.0Q204.7,-139.0 201.7,-140.5Q198.6,-142.0 195.0,-144.6L193.6,-144.6L188.8,-138.7Q194.2,-134.0 199.4,-132.1Q204.6,-130.2 210.1,-130.2Q216.0,-130.2 220.5,-132.3Q225.0,-134.4 227.6,-138.1Q230.3,-141.8 230.3,-146.4Q230.3,-151.1 227.2,-154.7Q224.2,-158.3 218.2,-158.3Q214.4,-158.3 211.1,-156.4Q207.7,-154.4 205.7,-151.3Q203.8,-148.2 203.8,-144.2Q203.8,-141.8 204.9,-139.0Q206.0,-136.1 209.3,-133.4Z" style="fill:var(--wm-mark, #C9A24A)"/></symbol>
+    <symbol id="octagram" viewBox="0 0 120 120"><path d="M60 4 L76.4 20.4 L99.6 20.4 L99.6 43.6 L116 60 L99.6 76.4 L99.6 99.6 L76.4 99.6 L60 116 L43.6 99.6 L20.4 99.6 L20.4 76.4 L4 60 L20.4 43.6 L20.4 20.4 L43.6 20.4 Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6C9.5 4.5 6 4.3 3 5v14c3-.7 6.5-.5 9 1 2.5-1.5 6-1.7 9-1V5c-3-.7-6.5-.5-9 1Z"/><path d="M12 6v14"/></g></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></g></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M16 14.2a5.5 5.5 0 0 1 6 5.8"/></g></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-1.2-1-1.6-1-2.6 0-.9.7-1.6 1.6-1.6H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7.5" r="1.2"/><circle cx="15" cy="7.5" r="1.2"/></g></symbol>
+  </svg>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="الصفحة الرئيسية">
+        <span class="brand-mark">
+          <img data-logo="academy-nowave" src="images/logo/academy-navy-nowave.webp" alt="" width="58" height="58">
+          <svg class="logo-waves" data-waves viewBox="0 0 1024 1024" aria-hidden="true"></svg>
+        </span>
+        <span class="brand-text">
+          <span class="wordmark wordmark--rattil" data-brand-only="rattil"><span class="wm-accent">رتّل</span><span class="wm-plain" aria-hidden="true">رتل</span></span>
+          <span class="wordmark wordmark--uns" data-brand-only="uns" aria-label="أُنس"><svg viewBox="0 0 247 201.4"><use href="#uns-wordmark"/></svg></span>
+          <span class="brand-tagline" data-brand-only="rattil">اقرأ، وارتقِ، ورتّل</span>
+          <span class="brand-tagline" data-brand-only="uns">في صُحبة القرآن… أُنس</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="القائمة الرئيسية">
+        <ul>
+          <li><a href="#programs">البرامج</a></li>
+          <li><a href="#how">كيف نعمل</a></li>
+          <li><a href="#family">متابعة الأسرة</a></li>
+          <li><a href="#teachers">المعلمين</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="link-login" href="#login">تسجيل الدخول</a>
+        <a class="btn btn--accent" href="#register" data-magnetic>سجّل الآن</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-labelledby="hero-title" data-hero>
+      <div class="symbols-layer" data-symbols="hero" aria-hidden="true"></div>
+      <svg class="hero-ornament" aria-hidden="true"><use href="#octagram" fill="none" stroke="currentColor" stroke-width=".4"/></svg>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-ayah" data-anim="ayah">
+            <span data-brand-only="rattil">﴿ وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا ﴾</span>
+            <span data-brand-only="uns">﴿ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ ﴾</span>
+          </p>
+          <h1 class="hero-title" id="hero-title" data-split>احفظ كتاب الله بإتقان، مع معلّم يتابعك <span class="hl">حلقةً بحلقة</span></h1>
+          <p class="hero-lead" data-anim="fade">أكاديمية أونلاين لتحفيظ القرآن الكريم للصغار والكبار، في حلقات فردية أو مجالس جماعية، مع تقرير وملاحظة من المعلّم بعد كل حلقة.</p>
+          <div class="hero-ctas" data-anim="fade">
+            <a class="btn btn--accent btn--lg" href="#register" data-magnetic>سجّل كطالب أو وليّ أمر <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost-deep btn--lg" href="#programs">تعرّف على البرامج</a>
+          </div>
+          <ul class="hero-points" data-anim="points">
+            <li><svg><use href="#i-check"/></svg>للأطفال والكبار</li>
+            <li><svg><use href="#i-check"/></svg>حلقات فردية وجماعية</li>
+            <li><svg><use href="#i-check"/></svg>تقرير لوليّ الأمر بعد كل حلقة</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" data-visual>
+          <div class="hero-glow"></div>
+          <svg class="hero-ring" aria-hidden="true"><use href="#octagram" fill="none" stroke="currentColor" stroke-width=".35" stroke-dasharray="1.2 2.2"/></svg>
+          <svg class="hero-ring hero-ring--inner" aria-hidden="true"><use href="#octagram" fill="none" stroke="currentColor" stroke-width=".3" stroke-dasharray=".6 3"/></svg>
+
+          <div class="hero-logo" data-logo-tilt>
+            <div class="logo-stack">
+              <img data-logo="academy-nowave" src="images/logo/academy-navy-nowave.webp" alt="شعار الأكاديمية: مصحف مفتوح على رحل تعلوه موجة ترددات داخل نجمة ثمانية" width="1024" height="1024">
+              <svg class="logo-waves" data-waves viewBox="0 0 1024 1024" aria-hidden="true"></svg>
+            </div>
+          </div>
+
+          <p class="hero-slogan" data-hero-slogan>
+            <span data-brand-only="rattil">اقرأ، وارتقِ، ورتّل</span>
+            <span data-brand-only="uns">في صُحبة القرآن… أُنس</span>
+          </p>
+
+          <div class="hero-family hero-family--adults" data-depth="0.6">
+            <img data-logo="adults" src="images/logo/adults-navy.webp" alt="" width="200" height="200">
+            <span>الكبار</span>
+          </div>
+          <div class="hero-family hero-family--kids" data-depth="0.9">
+            <img data-logo="kids" src="images/logo/kids-navy.webp" alt="" width="200" height="200">
+            <span>الأطفال</span>
+          </div>
+
+          <!-- floating cards: around the logo on desktop, stacked under it on phones -->
+          <div class="hero-cards" data-hero-cards>
+            <div class="float-card report-card" data-depth="1.2">
+              <div class="rc-head"><span>تقرير آخر حلقة</span><span class="pill pill--present">حاضر</span></div>
+              <p class="rc-title">يوسف — سورة الملك</p>
+              <p class="rc-note">أتقن الآيات ١–١٠، ويراجع أحكام المدّ قبل الحلقة القادمة.</p>
+              <div class="rc-foot"><div class="rc-progress" aria-label="حفظ ٦٥٪ من السورة"><i></i></div><span class="rc-pct">٦٥٪</span></div>
+            </div>
+  
+            <div class="float-card next-chip" data-depth="1.5">
+              <span class="dot" aria-hidden="true"></span>
+              <svg><use href="#i-calendar"/></svg>
+              <span>الحلقة القادمة: الثلاثاء ٧:٠٠ م</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true"><span class="mouse"></span><span>انزل</span></div>
+    </section>
+
+    <!-- ===== Slogan band ===== -->
+    <section class="slogan-band" aria-label="شعار الأكاديمية" data-slogan-band>
+      <div class="symbols-layer symbols-layer--light" data-symbols="slogan" data-density=".6" aria-hidden="true"></div>
+      <div class="container slogan-inner">
+        <svg class="slogan-orn" viewBox="0 0 600 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true" data-slogan-orn>
+          <path d="M0 20 H230"/><path d="M370 20 H600"/>
+          <path d="M300 4 L316 20 L300 36 L284 20 Z"/><path d="M300 12 L308 20 L300 28 L292 20 Z"/>
+          <path d="M252 20 L262 12 L272 20 L262 28 Z"/><path d="M328 20 L338 12 L348 20 L338 28 Z"/>
+        </svg>
+        <p class="slogan-text" data-brand-only="rattil" data-slogan-words>اقرأ، وارتقِ، ورتّل</p>
+        <p class="slogan-text" data-brand-only="uns" data-slogan-words>في صُحبة القرآن… أُنس</p>
+        <p class="slogan-src" data-brand-only="rattil">من حديث «اقرأ وارتقِ ورتّل كما كنت ترتّل في الدنيا» — رواه أبو داود والترمذي</p>
+        <svg class="slogan-orn slogan-orn--flip" viewBox="0 0 600 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true" data-slogan-orn>
+          <path d="M0 20 H230"/><path d="M370 20 H600"/>
+          <path d="M300 4 L316 20 L300 36 L284 20 Z"/><path d="M300 12 L308 20 L300 28 L292 20 Z"/>
+          <path d="M252 20 L262 12 L272 20 L262 28 Z"/><path d="M328 20 L338 12 L348 20 L338 28 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== البرامج ===== -->
+    <section class="programs section" id="programs" aria-labelledby="programs-title" data-programs>
+      <div class="symbols-layer symbols-layer--light" data-symbols="programs" aria-hidden="true"></div>
+
+      <div class="container section-inner">
+        <header class="section-head" data-reveal>
+          <span class="eyebrow">البرامج</span>
+          <h2 class="section-title" id="programs-title">مسار حفظ على مقاس الحافظ</h2>
+          <p class="section-lead">اختر لمن تسجّل، وشاهد كيف تسير الرحلة.</p>
+        </header>
+
+        <div class="prog-seg" role="tablist" aria-label="لمن تسجّل" data-reveal>
+          <span class="prog-seg-pill" aria-hidden="true"></span>
+          <button type="button" role="tab" id="tab-kids" aria-controls="panel-kids" aria-selected="true" data-prog-tab="0">لطفلي</button>
+          <button type="button" role="tab" id="tab-adults" aria-controls="panel-adults" aria-selected="false" data-prog-tab="1">لنفسي</button>
+        </div>
+
+        <div class="prog-panels" data-prog-panels>
+          <!-- kids -->
+          <article class="prog-panel is-active" id="panel-kids" role="tabpanel" aria-labelledby="tab-kids" data-prog-panel="0">
+            <div class="prog-copy">
+              <img class="prog-emblem" data-logo="kids" src="images/logo/kids-navy.webp" alt="" width="200" height="200">
+              <h3>برنامج الأطفال</h3>
+              <p>حلقات قصيرة ومحبّبة تبدأ غالبًا من جزء عمّ، بمعلّم يعرف كيف يشجّع الصغار، وتقرير يصلك بعد كل حلقة.</p>
+              <ul class="chips">
+                <li>من ٥ لـ ١٢ سنة</li>
+                <li>فردي أو جماعي</li>
+                <li>متابعة وليّ الأمر</li>
+              </ul>
+              <a class="btn btn--accent btn--lg" href="#register">سجّل طفلك <svg><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="prog-visual journey" data-journey>
+              <div class="pv-head"><span>مسار يوسف في جزء عمّ</span><small>مثال توضيحي</small></div>
+              <div class="journey-map">
+                <svg class="journey-path" viewBox="0 0 400 230" aria-hidden="true">
+                  <path class="jp-track" d="M360 55 H40 C-2 55 -2 175 40 175 H360"/>
+                  <path class="jp-done" d="M360 55 H40 C-2 55 -2 175 40 175 H120" data-journey-progress/>
+                </svg>
+                <ol class="journey-nodes">
+                  <li class="jn is-done" style="--x:360;--y:55"><span class="jn-dot"><svg><use href="#i-check"/></svg></span><span class="jn-name">الناس</span></li>
+                  <li class="jn is-done" style="--x:280;--y:55"><span class="jn-dot"><svg><use href="#i-check"/></svg></span><span class="jn-name">الفلق</span></li>
+                  <li class="jn is-done" style="--x:200;--y:55"><span class="jn-dot"><svg><use href="#i-check"/></svg></span><span class="jn-name">الإخلاص</span></li>
+                  <li class="jn is-done" style="--x:120;--y:55"><span class="jn-dot"><svg><use href="#i-check"/></svg></span><span class="jn-name">المسد</span></li>
+                  <li class="jn is-done" style="--x:40;--y:55"><span class="jn-dot"><svg><use href="#i-check"/></svg></span><span class="jn-name">النصر</span></li>
+                  <li class="jn is-done" style="--x:40;--y:175"><span class="jn-dot"><svg><use href="#i-check"/></svg></span><span class="jn-name">الكافرون</span></li>
+                  <li class="jn is-now" style="--x:120;--y:175"><span class="jn-dot"><svg><use href="#i-book"/></svg></span><span class="jn-name">الكوثر <b>الآن</b></span></li>
+                  <li class="jn" style="--x:200;--y:175"><span class="jn-dot"></span><span class="jn-name">الماعون</span></li>
+                  <li class="jn" style="--x:280;--y:175"><span class="jn-dot"></span><span class="jn-name">قريش</span></li>
+                  <li class="jn" style="--x:360;--y:175"><span class="jn-dot"></span><span class="jn-name">الفيل</span></li>
+                </ol>
+              </div>
+              <p class="pv-note"><svg><use href="#i-quote"/></svg><span><b>ملاحظة المعلّم:</b> حفظ ممتاز للكافرون، ونبدأ الكوثر في الحلقة القادمة.</span></p>
+            </div>
+          </article>
+
+          <!-- adults -->
+          <article class="prog-panel" id="panel-adults" role="tabpanel" aria-labelledby="tab-adults" data-prog-panel="1">
+            <div class="prog-copy">
+              <img class="prog-emblem" data-logo="adults" src="images/logo/adults-navy.webp" alt="" width="200" height="200">
+              <h3>برنامج الكبار</h3>
+              <p>حفظ جديد أو تثبيت ما حفظت أو تصحيح التلاوة، في مواعيد ثابتة تختارها حسب عملك ودراستك.</p>
+              <ul class="chips">
+                <li>حفظ جديد</li>
+                <li>تثبيت المحفوظ</li>
+                <li>تصحيح التلاوة</li>
+              </ul>
+              <a class="btn btn--accent btn--lg" href="#register">ابدأ رحلتك <svg><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="prog-visual week" data-week>
+              <div class="pv-head"><span>جدولك الأسبوعي</span><small>مثال توضيحي</small></div>
+              <ul class="week-list">
+                <li class="wk">
+                  <span class="wk-day">الأحد</span>
+                  <span class="wk-what">حلقة فردية · حفظ جديد</span>
+                  <span class="wk-time">٩:٠٠ م</span>
+                </li>
+                <li class="wk">
+                  <span class="wk-day">الثلاثاء</span>
+                  <span class="wk-what">حلقة فردية · مراجعة</span>
+                  <span class="wk-time">٩:٠٠ م</span>
+                </li>
+                <li class="wk wk--moved">
+                  <span class="wk-day">الخميس</span>
+                  <span class="wk-what">مؤجَّلة بعذر</span>
+                  <span class="wk-time"><s>٩:٠٠ م</s></span>
+                  <span class="wk-new"><svg><use href="#i-calendar"/></svg>حدّد المعلّم موعدًا بديلًا: <b>السبت ٨:٠٠ م</b></span>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="prog-dots" aria-hidden="true"><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ===== كيف نعمل ===== -->
+    <section class="how section section--deep" id="how" aria-labelledby="how-title" data-how>
+      <div class="symbols-layer" data-symbols="how" data-density=".55" aria-hidden="true"></div>
+      <div class="container section-inner">
+        <header class="section-head" data-reveal>
+          <span class="eyebrow">كيف نعمل</span>
+          <h2 class="section-title" id="how-title">من التسجيل إلى أول حلقة في أربع خطوات</h2>
+        </header>
+
+        <div class="steps-wrap" data-steps>
+        <span class="steps-line" aria-hidden="true"><i data-steps-line></i></span>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-badge"><svg aria-hidden="true"><use href="#octagram"/></svg><b>١</b></span>
+            <h3>سجّل حسابك</h3>
+            <p>كطالب أو كوليّ أمر، وأضف بيانات أبنائك.</p>
+          </li>
+          <li class="step">
+            <span class="step-badge"><svg aria-hidden="true"><use href="#octagram"/></svg><b>٢</b></span>
+            <h3>مراجعة الطلب</h3>
+            <p>تراجع الإدارة طلبك وتتواصل معك لتحديد المستوى.</p>
+          </li>
+          <li class="step">
+            <span class="step-badge"><svg aria-hidden="true"><use href="#octagram"/></svg><b>٣</b></span>
+            <h3>الانضمام لمجلس</h3>
+            <p>نضمّك إلى مجلس فردي أو جماعي مع معلّم ومواعيد ثابتة.</p>
+          </li>
+          <li class="step">
+            <span class="step-badge"><svg aria-hidden="true"><use href="#octagram"/></svg><b>٤</b></span>
+            <h3>حلقات ومتابعة</h3>
+            <p>احضر حلقاتك، وتابع تقرير المعلّم بعد كل حلقة.</p>
+          </li>
+        </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== متابعة الأسرة ===== -->
+    <section class="family section" id="family" aria-labelledby="family-title" data-family>
+      <div class="symbols-layer symbols-layer--light" data-symbols="family" data-density=".5" aria-hidden="true"></div>
+      <div class="container section-inner family-grid">
+        <div class="family-copy">
+          <header class="section-head section-head--start" data-reveal>
+            <span class="eyebrow">متابعة الأسرة</span>
+            <h2 class="section-title" id="family-title">تعرف أين وصل ابنك، دون أن تسأل</h2>
+            <p class="section-lead">كل حلقة تُسجَّل: من حضر، وماذا حفظ، وما يحتاج مراجعته. وكل أبنائك في حساب واحد.</p>
+          </header>
+          <ul class="features" data-reveal-stagger>
+            <li class="feature">
+              <span class="feature-ic"><svg><use href="#i-quote"/></svg></span>
+              <div><h3>ملاحظة لكل طالب بعد كل حلقة</h3><p>حتى في المجالس الجماعية، لكل طالب ملاحظته الخاصة.</p></div>
+            </li>
+            <li class="feature">
+              <span class="feature-ic"><svg><use href="#i-calendar"/></svg></span>
+              <div><h3>تأجيل بعذر قبل الحلقة</h3><p>اطلبه من حسابك، ويحدد المعلّم موعدًا بديلًا عند القبول.</p></div>
+            </li>
+            <li class="feature">
+              <span class="feature-ic"><svg><use href="#i-layers"/></svg></span>
+              <div><h3>دفعات حلقات واضحة</h3><p>ترى كم حلقة تبقّت، ونتواصل معك قبل انتهاء الدفعة لتجديدها.</p></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="fam-app" data-fam-app data-reveal>
+          <div class="fam-top">
+            <span class="fam-title">حساب الأسرة</span>
+            <small>مثال توضيحي</small>
+          </div>
+          <div class="fam-people" role="tablist" aria-label="أفراد الأسرة">
+            <button type="button" role="tab" aria-selected="true" data-fam="yusuf"><span class="av">ي</span>يوسف</button>
+            <button type="button" role="tab" aria-selected="false" data-fam="maryam"><span class="av">م</span>مريم</button>
+            <button type="button" role="tab" aria-selected="false" data-fam="me"><span class="av">أ</span>أنا</button>
+          </div>
+
+          <div class="fam-body" data-fam-body aria-live="polite">
+            <div class="fam-card">
+              <div class="fam-row"><span class="muted" data-f="last">آخر حلقة · الأحد</span><span class="pill pill--present" data-f="status">حاضر</span></div>
+              <p class="fam-note" data-f="note">حفظ ممتاز للكافرون، ونبدأ الكوثر في الحلقة القادمة.</p>
+            </div>
+            <div class="fam-card">
+              <div class="fam-row"><span class="muted">الدفعة الحالية</span><span class="fam-count" data-f="count">٨ من ١٠</span></div>
+              <div class="batch" data-f="batch" aria-hidden="true"></div>
+              <p class="fam-alert" data-f="alert">متبقي حلقتان في هذه الدفعة</p>
+            </div>
+            <div class="fam-card fam-next">
+              <span class="fam-next-ic"><svg><use href="#i-calendar"/></svg></span>
+              <div><span class="muted">الحلقة القادمة</span><b data-f="next">الثلاثاء ٧:٠٠ م</b></div>
+              <button type="button" class="fam-btn" data-fam-postpone>طلب تأجيل</button>
+            </div>
+            <p class="fam-toast" data-fam-toast role="status"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== فردية أم مجلس ===== -->
+    <section class="types section section--surface" id="types" aria-labelledby="types-title">
+      <div class="container section-inner">
+        <header class="section-head" data-reveal>
+          <span class="eyebrow">نوع الحلقة</span>
+          <h2 class="section-title" id="types-title">فردية أم مجلس جماعي؟</h2>
+        </header>
+        <div class="types-grid">
+          <article class="type-card" data-type-card>
+            <span class="type-ic"><svg><use href="#i-user"/></svg></span>
+            <h3>حلقة فردية</h3>
+            <p>طالب واحد مع معلّمه، بسرعة تناسبه تمامًا.</p>
+            <ul class="ticks">
+              <li><svg><use href="#i-check"/></svg>تأجيل بعذر يُعوَّض بموعد بديل</li>
+              <li><svg><use href="#i-check"/></svg>تركيز كامل على مستوى الطالب</li>
+            </ul>
+          </article>
+          <span class="types-or" aria-hidden="true">أو</span>
+          <article class="type-card type-card--group" data-type-card>
+            <span class="type-ic"><svg><use href="#i-people"/></svg></span>
+            <h3>مجلس جماعي</h3>
+            <p>مجموعة بمستوى متقارب، تتنافس على الخير وتحفّز بعضها.</p>
+            <ul class="ticks">
+              <li><svg><use href="#i-check"/></svg>الغياب بعذر لا يُخصم من الدفعة</li>
+              <li><svg><use href="#i-check"/></svg>ملاحظة خاصة لكل طالب</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== انضم كمعلّم ===== -->
+    <section class="teach section section--deep" id="teachers" aria-labelledby="teach-title">
+      <div class="symbols-layer" data-symbols="teach" data-density=".5" aria-hidden="true"></div>
+      <svg class="teach-orn" aria-hidden="true"><use href="#octagram" fill="none" stroke="currentColor" stroke-width=".4"/></svg>
+      <div class="container section-inner teach-inner">
+        <img class="teach-emblem" data-logo="adults" src="images/logo/adults-navy.webp" alt="" width="200" height="200" data-reveal>
+        <p class="teach-hadith" data-reveal>«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»</p>
+        <h2 class="section-title" id="teach-title" data-reveal>معلّم قرآن؟ انضم إلى فريق <span data-brand-only="rattil">رتّل</span><span data-brand-only="uns">أُنس</span></h2>
+        <p class="section-lead" data-reveal>قدّم طلبك، وبعد مراجعته تبدأ مع مجالسك بأجر بالساعة على مواعيدك المجدولة، ومشرف يتابع معك.</p>
+        <a class="btn btn--accent btn--lg" href="#teacher-apply" data-reveal data-magnetic>قدّم كمعلّم <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ===== الأسئلة الشائعة ===== -->
+    <section class="faq section" id="faq" aria-labelledby="faq-title">
+      <div class="symbols-layer symbols-layer--light" data-symbols="faq" data-density=".45" aria-hidden="true"></div>
+      <div class="container section-inner faq-inner">
+        <header class="section-head" data-reveal>
+          <span class="eyebrow">الأسئلة الشائعة</span>
+          <h2 class="section-title" id="faq-title">قبل أن تبدأ</h2>
+        </header>
+        <div class="faq-list" data-faq data-reveal-stagger>
+          <details class="qa" open>
+            <summary><span>هل الحلقات فردية أم جماعية؟</span><i aria-hidden="true"></i></summary>
+            <div class="qa-a"><p>الاثنان متاحان. الحلقة الفردية لطالب واحد مع معلّمه، والمجلس الجماعي يضم عددًا من الطلاب بمستوى متقارب.</p></div>
+          </details>
+          <details class="qa">
+            <summary><span>ماذا لو لم يستطع الطالب حضور حلقة؟</span><i aria-hidden="true"></i></summary>
+            <div class="qa-a"><p>اطلب التأجيل مع ذكر العذر قبل موعد الحلقة. في الحلقات الفردية يحدد المعلّم موعدًا بديلًا، وفي المجالس الجماعية يُسجَّل غيابًا بعذر ولا يُخصم من الدفعة.</p></div>
+          </details>
+          <details class="qa">
+            <summary><span>وماذا لو غاب المعلّم؟</span><i aria-hidden="true"></i></summary>
+            <div class="qa-a"><p>تُعوَّض الحلقة بموعد آخر، ولا تُحتسب من دفعتك.</p></div>
+          </details>
+          <details class="qa">
+            <summary><span>متى أبدأ في الدفع؟</span><i aria-hidden="true"></i></summary>
+            <div class="qa-a"><p>بعد حضور الطالب أول حلقة في مجلسه، ويتم الدفع بالتنسيق مع الإدارة [أضف طرق الدفع المتاحة].</p></div>
+          </details>
+          <details class="qa">
+            <summary><span>هل أتابع أكثر من ابن من حساب واحد؟</span><i aria-hidden="true"></i></summary>
+            <div class="qa-a"><p>نعم، حساب وليّ الأمر يضم كل أبنائه، ويمكنه أيضًا الالتحاق بمجلس بنفسه.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== الدعوة الأخيرة ===== -->
+    <section class="cta section section--deep" id="register" aria-labelledby="cta-title">
+      <div class="symbols-layer" data-symbols="cta" data-density=".55" aria-hidden="true"></div>
+      <div class="container section-inner cta-inner">
+        <div class="cta-logo" data-reveal aria-hidden="true">
+          <svg class="cta-ring"><use href="#octagram" fill="none" stroke="currentColor" stroke-width=".35" stroke-dasharray="1.2 2.2"/></svg>
+          <div class="logo-stack">
+            <img data-logo="academy-nowave" src="images/logo/academy-navy-nowave.webp" alt="" width="1024" height="1024" loading="lazy">
+            <svg class="logo-waves" data-waves viewBox="0 0 1024 1024"></svg>
+          </div>
+        </div>
+        <p class="cta-ayah" id="cta-title" data-reveal>﴿ وَلَقَدْ يَسَّرْنَا ٱلْقُرْءَانَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ ﴾</p>
+        <p class="cta-lead" data-reveal>ابدأ اليوم، وخطوة صغيرة كل حلقة تصنع حافظًا.</p>
+        <div class="cta-actions" data-reveal>
+          <a class="btn btn--accent btn--lg" href="#register-form" data-magnetic>سجّل الآن <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost-deep btn--lg" href="#programs">تعرّف على البرامج</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="العودة لأعلى الصفحة">
+          <span class="brand-mark"><img data-logo="academy-nowave" src="images/logo/academy-navy-nowave.webp" alt="" width="58" height="58" loading="lazy"></span>
+          <span class="brand-text">
+            <span class="wordmark wordmark--rattil" data-brand-only="rattil"><span class="wm-accent">رتّل</span><span class="wm-plain" aria-hidden="true">رتل</span></span>
+            <span class="wordmark wordmark--uns" data-brand-only="uns" aria-label="أُنس"><svg viewBox="0 0 247 201.4"><use href="#uns-wordmark"/></svg></span>
+            <span class="brand-tagline" data-brand-only="rattil">اقرأ، وارتقِ، ورتّل</span>
+            <span class="brand-tagline" data-brand-only="uns">في صُحبة القرآن… أُنس</span>
+          </span>
+        </a>
+        <p>أكاديمية أونلاين لتحفيظ القرآن الكريم للصغار والكبار.</p>
+      </div>
+      <nav class="footer-col" aria-label="الأكاديمية">
+        <h3>الأكاديمية</h3>
+        <ul>
+          <li><a href="#programs">البرامج</a></li>
+          <li><a href="#how">كيف نعمل</a></li>
+          <li><a href="#family">متابعة الأسرة</a></li>
+          <li><a href="#teachers">انضم كمعلّم</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <h3>تواصل معنا</h3>
+        <ul>
+          <li><svg><use href="#i-phone"/></svg><span>[رقم واتساب]</span></li>
+          <li><svg><use href="#i-mail"/></svg><span>[البريد الإلكتروني]</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-brand-only="rattil">رتّل</span><span data-brand-only="uns">أُنس</span> — جميع الحقوق محفوظة</span>
+      <a href="#top" class="to-top">لأعلى <svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </footer>
+
+    </div>
+
+  <!-- ===== Mobile: tab bar + full menu ===== -->
+  <nav class="tabbar" aria-label="التنقل" data-tabbar>
+    <a class="tab" href="#top" aria-current="page"><svg><use href="#i-home"/></svg>الرئيسية</a>
+    <a class="tab" href="#programs"><svg><use href="#i-book"/></svg>البرامج</a>
+    <a class="tab" href="#teachers"><svg><use href="#i-people"/></svg>المعلمين</a>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><svg><use href="#i-more"/></svg>المزيد</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu data-lenis-prevent>
+    <ul>
+      <li><a href="#programs">البرامج<svg><use href="#i-chevron"/></svg></a></li>
+      <li><a href="#how">كيف نعمل<svg><use href="#i-chevron"/></svg></a></li>
+      <li><a href="#family">متابعة الأسرة<svg><use href="#i-chevron"/></svg></a></li>
+      <li><a href="#teachers">انضم كمعلّم<svg><use href="#i-chevron"/></svg></a></li>
+      <li><a href="#faq">الأسئلة الشائعة<svg><use href="#i-chevron"/></svg></a></li>
+    </ul>
+    <div class="menu-brand" data-brand-controls></div>
+    <div class="menu-actions">
+      <a class="btn btn--accent btn--lg" href="#register">سجّل الآن</a>
+      <a class="btn btn--ghost-deep btn--lg" href="#login">تسجيل الدخول</a>
+    </div>
+  </div>
+
+  <!-- ===== Brand switcher (name + palette) ===== -->
+  <div class="brand-switcher" data-switcher>
+    <button class="switcher-toggle" type="button" aria-expanded="false" aria-controls="switcher-panel" data-switcher-toggle>
+      <svg width="22" height="22"><use href="#i-palette"/></svg>
+      <span class="label">الاسم والألوان</span>
+      <span class="chip-dots" aria-hidden="true"><i></i><i></i></span>
+    </button>
+    <div class="switcher-panel" id="switcher-panel" role="dialog" aria-label="اختيار الاسم والألوان" data-switcher-panel data-lenis-prevent>
+      <span class="sheet-grab" aria-hidden="true"></span>
+      <h2>الاسم والألوان</h2>
+      <div data-brand-controls></div>
+    </div>
+  </div>
+  <div class="switcher-scrim" data-switcher-scrim></div>
+
+  <script src="js/vendor/gsap.min.js?v=202610182315"></script>
+  <script src="js/vendor/ScrollTrigger.min.js?v=202610182315"></script>
+  <script src="js/vendor/lenis.min.js?v=202610182315"></script>
+  <script src="js/brand.js?v=202610182315"></script>
+  <script src="js/logo-waves.js?v=202610182315"></script>
+  <script src="js/symbols.js?v=202610182315"></script>
+  <script src="js/header.js?v=202610182315"></script>
+  <script src="js/hero.js?v=202610182315"></script>
+  <script src="js/slogan.js?v=202610182315"></script>
+  <script src="js/reveal.js?v=202610182315"></script>
+  <script src="js/programs.js?v=202610182315"></script>
+  <script src="js/sections.js?v=202610182315"></script>
+  <script src="js/main.js?v=202610182315"></script>
+</body>
+</html>

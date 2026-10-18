@@ -1,0 +1,100 @@
+/* =========================================================
+   Design tokens — رتّل / أُنس
+   Palettes are switched with  <html data-palette="navy|green|emerald">
+   Brand name is switched with <html data-brand="rattil|uns">
+   ========================================================= */
+
+:root {
+  /* Fonts (from the brand guide) */
+  --f-display: 'Reem Kufi', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --f-body: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --f-quran: 'Amiri Quran', 'Amiri', serif;
+  --f-kids: 'Baloo Bhaijaan 2', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+
+  /* Type scale */
+  --fs-xs: 0.8125rem;   /* 13 */
+  --fs-sm: 0.9375rem;   /* 15 */
+  --fs-md: 1.0625rem;   /* 17 */
+  --fs-lg: 1.25rem;     /* 20 */
+  --fs-xl: 1.75rem;     /* 28 */
+  --fs-2xl: clamp(2rem, 4vw, 2.75rem);
+  --fs-hero: clamp(2.25rem, 5.2vw, 4rem);
+
+  /* Spacing & shape */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px; --radius-pill: 999px;
+  --container: 1200px;
+  --header-h: 84px;
+  --tabbar-h: 0px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --ease-soft: cubic-bezier(.65, .05, .35, 1);
+  --t-theme: .6s;
+
+  /* ---------- Default palette: كحلي وذهبي ---------- */
+  --c-deep: #0F2A44;          /* hero, header, footer */
+  --c-deep-2: #163756;        /* raised surfaces on deep */
+  --c-accent: #C9A24A;        /* buttons, marks, lines */
+  --c-accent-text: #9A7425;   /* accent-colored text on light grounds */
+  --c-accent-on-deep: #E3C77E;/* small accent text on deep */
+  --c-on-accent: #0F2A44;
+  --c-ground: #F8F4EA;        /* page background */
+  --c-surface: #FFFDF8;       /* cards */
+  --c-ink: #0F2A44;           /* body text */
+  --c-muted: #5B6275;
+  --c-on-deep: #EDE8DA;
+  --c-on-deep-muted: #C2C6CF;
+  --c-wave: #D7AA49;          /* logo frequency bars */
+  --c-symbol: #C9A24A;        /* background line symbols on deep */
+  --symbol-opacity: .26;
+  --c-line: rgba(15, 42, 68, .12);
+  --c-line-on-deep: rgba(237, 232, 218, .16);
+}
+
+/* ---------- أخضر وبرتقالي (brand guide, 18 Oct) + two darker greens ---------- */
+html[data-palette="green"],
+html[data-palette="green-dark"],
+html[data-palette="green-deeper"] {
+  --c-deep: #075B1C;
+  --c-deep-2: #0B6A25;
+  --c-accent: #E05614;
+  --c-accent-text: #A63E0C;
+  --c-accent-on-deep: #FFB27F;
+  --c-on-accent: #FFF7EE;
+  --c-ground: #F7EDDF;
+  --c-surface: #FDF8F1;
+  --c-ink: #0B3D16;
+  --c-muted: #6A5B47;
+  --c-on-deep: #F7EDDF;
+  --c-on-deep-muted: #D3E6D3;
+  --c-wave: #E56C27;
+  /* orange is too close in brightness to the green to read at low opacity */
+  --c-symbol: #FFB27F;
+  --symbol-opacity: .4;
+  --c-line: rgba(7, 91, 28, .13);
+  --c-line-on-deep: rgba(247, 237, 223, .18);
+}
+/* same palette, darker ground (Karim's pick B and C, 18 Oct) */
+html[data-palette="green-dark"]   { --c-deep: #054014; --c-deep-2: #084D1B; }
+html[data-palette="green-deeper"] { --c-deep: #043410; --c-deep-2: #064016; }
+
+/* ---------- ذهبي وزمردي ---------- */
+html[data-palette="emerald"] {
+  --c-deep: #0E5A47;
+  --c-deep-2: #136955;
+  --c-accent: #C9A24A;
+  --c-accent-text: #9A7425;
+  --c-accent-on-deep: #E8D08F;
+  --c-on-accent: #0E3A2F;
+  --c-ground: #F7F2E7;
+  --c-surface: #FFFDF8;
+  --c-ink: #0E3A2F;
+  --c-muted: #4F6259;
+  --c-on-deep: #EEF0E6;
+  --c-on-deep-muted: #C7D6CC;
+  --c-wave: #D7AA49;
+  --c-line: rgba(14, 90, 71, .13);
+  --c-line-on-deep: rgba(238, 240, 230, .18);
+}

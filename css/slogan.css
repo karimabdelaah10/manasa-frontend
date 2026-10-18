@@ -1,0 +1,94 @@
+/* =========================================================
+   Slogan: under the big hero logo + a large band after the hero.
+   رتّل: «اقرأ، وارتقِ، ورتّل» — أُنس: «في صُحبة القرآن… أُنس»
+   ========================================================= */
+
+/* ---------- under the hero logo ---------- */
+.hero-slogan {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 88%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  pointer-events: none;
+}
+.hero-slogan span {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  color: var(--c-accent-on-deep);
+  letter-spacing: .01em;
+  white-space: nowrap;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+}
+/* small diamonds either side */
+.hero-slogan span::before,
+.hero-slogan span::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: currentColor;
+  transform: rotate(45deg);
+  opacity: .8;
+}
+
+/* ---------- the band ---------- */
+.slogan-band {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--c-ground);
+  padding-block: clamp(72px, 12vw, 150px);
+  text-align: center;
+  transition: background-color var(--t-theme) ease;
+}
+.slogan-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 3vw, 28px);
+}
+.slogan-text {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 9vw, 6.25rem);
+  line-height: 1.25;
+  color: var(--c-ink);
+  text-wrap: balance;
+}
+.slogan-text .sw-word { display: inline-block; will-change: transform, opacity; }
+.slogan-text .sw-word + .sw-word { margin-inline-start: .28em; }
+/* the brand word in the slogan takes the accent */
+.slogan-text .sw-word.is-key { color: var(--c-accent-text); }
+
+.slogan-src {
+  margin: 0;
+  max-width: 34rem;
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+}
+
+.slogan-orn {
+  width: min(560px, 86%);
+  height: auto;
+  fill: none;
+  stroke: var(--c-accent);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  overflow: visible;
+}
+.slogan-orn--flip { transform: scaleY(-1); }
+
+@media (max-width: 560px) {
+  .slogan-text { font-size: clamp(2.3rem, 12vw, 3.2rem); }
+}

@@ -1,0 +1,67 @@
+/* =========================================================
+   الدعوة الأخيرة + الفوتر
+   ========================================================= */
+
+.cta-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+.cta-logo { position: relative; width: clamp(170px, 22vw, 230px); aspect-ratio: 1; margin-bottom: 4px; }
+.cta-ring { position: absolute; inset: -14%; width: 128%; height: 128%; color: var(--c-accent); animation: spin 90s linear infinite; }
+.cta-logo .logo-stack { position: absolute; inset: 0; filter: drop-shadow(0 24px 34px rgba(0, 0, 0, .45)); }
+.cta-ayah {
+  font-family: var(--f-quran);
+  font-size: clamp(1.6rem, 3.6vw, 2.5rem);
+  line-height: 1.9;
+  color: var(--c-accent-on-deep);
+  max-width: 46rem;
+}
+.cta-lead { font-size: var(--fs-lg); color: var(--c-on-deep); }
+.cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
+
+@media (max-width: 560px) {
+  .cta-actions { flex-direction: column; width: 100%; }
+  .cta-actions .btn { width: 100%; border-radius: 16px; min-height: 54px; }
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  position: relative;
+  background: color-mix(in srgb, var(--c-deep) 82%, #000);
+  color: var(--c-on-deep-muted);
+  padding-block: clamp(48px, 7vw, 80px) 28px;
+  transition: background-color var(--t-theme) ease;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+}
+.footer-brand { display: flex; flex-direction: column; gap: 16px; }
+.footer-brand p { max-width: 24rem; font-size: var(--fs-sm); }
+.site-footer h3 { font-size: var(--fs-md); color: var(--c-on-deep); margin-bottom: 14px; }
+.footer-col ul { display: flex; flex-direction: column; gap: 10px; font-size: var(--fs-sm); }
+.footer-col li { display: flex; align-items: center; gap: 10px; }
+.footer-col svg { width: 18px; height: 18px; color: var(--c-accent-on-deep); flex: none; }
+.footer-col a { transition: color .2s ease; }
+.footer-col a:hover { color: var(--c-accent-on-deep); }
+
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-top: 40px; padding-top: 22px;
+  border-top: 1px solid var(--c-line-on-deep);
+  font-size: 13px;
+}
+.to-top { display: inline-flex; align-items: center; gap: 6px; color: var(--c-on-deep); }
+.to-top svg { width: 16px; height: 16px; transform: rotate(90deg); }
+
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* phones: finger-sized links, bottom row centred (clear of the floating button) */
+@media (max-width: 760px) {
+  .footer-col a { display: inline-flex; align-items: center; min-height: 40px; }
+  .footer-col ul { gap: 2px; }
+  .footer-col li { min-height: 40px; }
+  .footer-bottom { flex-direction: column; justify-content: center; text-align: center; gap: 6px; }
+  .to-top { min-height: 44px; padding: 0 16px; }
+}

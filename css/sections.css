@@ -1,0 +1,79 @@
+/* =========================================================
+   Shared section layout: grounds, headings, chips, ticks.
+   Each section has its own file for the rest.
+   ========================================================= */
+
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: clamp(72px, 10vw, 128px);
+  background: var(--c-ground);
+  color: var(--c-ink);
+  transition: background-color var(--t-theme) ease, color var(--t-theme) ease;
+}
+.section--deep { background: var(--c-deep); color: var(--c-on-deep); }
+.section--surface { background: var(--c-surface); }
+.section-inner { position: relative; z-index: 2; }
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.section-head--start { align-items: flex-start; text-align: start; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-accent-text);
+  background: color-mix(in srgb, var(--c-accent) 13%, transparent);
+}
+.eyebrow::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+.section--deep .eyebrow { color: var(--c-accent-on-deep); background: color-mix(in srgb, var(--c-on-deep) 9%, transparent); }
+
+.section-title { font-size: var(--fs-2xl); color: inherit; }
+.section--deep .section-title { color: #fff; }
+.section-lead { max-width: 40rem; font-size: var(--fs-md); color: var(--c-muted); }
+.section--deep .section-lead { color: var(--c-on-deep-muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  background: var(--c-surface);
+  box-shadow: inset 0 0 0 1px var(--c-line);
+}
+
+.ticks { display: flex; flex-direction: column; gap: 10px; }
+.ticks li { display: flex; align-items: flex-start; gap: 10px; }
+.ticks svg { width: 20px; height: 20px; flex: none; margin-top: 4px; color: var(--c-accent-text); }
+
+.muted { color: var(--c-muted); }
+
+/* light symbol layers sit a little quieter behind content */
+.symbols-layer--light { opacity: .22; }
+
+/* touch: no sticky hover lifts */
+@media (hover: none) {
+  .type-card:hover, .feature:hover { transform: none !important; }
+}
+
+/* sections off screen pause their decorative CSS animations (js/reveal.js) */
+.section.is-off *, .section.is-off *::before, .section.is-off *::after { animation-play-state: paused !important; }
+.hero.is-off *, .hero.is-off *::before, .hero.is-off *::after { animation-play-state: paused !important; }
