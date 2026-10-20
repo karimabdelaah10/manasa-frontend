@@ -21,7 +21,7 @@ window.Manasa = window.Manasa || {};
   var S0 = [514, 430], S1 = [512, 588];             /* spine: top, bottom */
   var L0 = [318, 362], L1 = [298, 500];             /* left page: outer top, outer bottom */
   var R0 = [697, 360], R1 = [762, 492];             /* right page: outer top, outer bottom */
-  var DUR = 1300;
+  var DUR = 1150;
 
   function lerp(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
   function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
@@ -95,7 +95,7 @@ window.Manasa = window.Manasa || {};
     if (!raf) raf = requestAnimationFrame(loop);
   }
   /* every logo keeps its own rhythm, so the pages on one screen never turn together */
-  function schedule(it, first) { setTimeout(function () { turn(it); }, (first ? 1200 : 3200) + Math.random() * 3800); }
+  function schedule(it, first) { setTimeout(function () { turn(it); }, (first ? 500 : 900) + Math.random() * 1100); }
 
   /* keep the drawing over the picture: the layer sits in the picture's parent, at the picture's box */
   function fitTo(it) {
