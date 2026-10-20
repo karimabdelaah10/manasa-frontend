@@ -44,7 +44,7 @@
   isolation: isolate;
   overflow: clip;
   background: var(--c-ground);
-  padding-block: clamp(72px, 12vw, 150px);
+  padding-block: clamp(72px, 12vw, 150px) clamp(28px, 4vw, 56px);   /* less below: the programs follow closely */
   text-align: center;
   transition: background-color var(--t-theme) ease;
 }
@@ -101,3 +101,6 @@
 @media (max-width: 560px) {
   .slogan-text { font-size: clamp(2.3rem, 12vw, 3.2rem); }
 }
+
+/* the programs come right after the slogan: no double gap between them */
+.slogan-band + .programs { padding-top: clamp(32px, 5vw, 64px); }

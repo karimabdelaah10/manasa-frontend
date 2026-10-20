@@ -19,7 +19,7 @@
   var READ = {
     stairs: function (t) { var m = /juz (\d+)/.exec(t); return m ? 'الجزء ' + ar(m[1]) : null; },
     rahl: function (t) { var m = /page (\d+)/.exec(t); return m ? 'الصفحة ' + ar(m[1]) : null; },
-    beads: function (t) { var m = /bead (\d+)/.exec(t); return m ? 'الحبة ' + ar(m[1]) : null; },
+    beads: function (t) { var m = /bead (\d+)/.exec(t); return m ? 'الحبة ' + ar(m[1]) + ' من ٣٣' : null; },
     lanterns: function (t) { var m = /lantern (\d+)/.exec(t); return m ? 'الفانوس ' + ar(m[1]) : null; }
   };
 
