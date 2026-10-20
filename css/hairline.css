@@ -32,23 +32,6 @@
 .hl--deep .hl-read { color: var(--c-on-deep-muted); }
 .hl--deep .hl-read.is-live { color: var(--c-accent-on-deep); }
 
-/* ---------- كيف نعمل: the misbaha counts by itself behind the steps, in colour ---------- */
-.how .section-inner > :not(.how-bg) { position: relative; z-index: 1; }
-.how-bg.hl {
-  position: absolute; z-index: 0; left: 50%; top: 52%;
-  width: min(900px, 130%); transform: translate(-50%, -50%);
-  pointer-events: none; opacity: .4;
-}
-.how-bg [data-hairline] { touch-action: auto; }
-.how-bg .bd-bead .sil { fill: var(--c-accent); stroke: color-mix(in srgb, var(--c-accent) 55%, #000); }
-.how-bg .bd-bead .lo { stroke: color-mix(in srgb, var(--c-accent) 55%, #fff); }
-.how-bg .bd-bead .sil.hi { fill: color-mix(in srgb, var(--c-accent) 70%, #fff); stroke: #fff; }
-.how-bg .bd-imam .sil { fill: var(--c-accent-on-deep); stroke: color-mix(in srgb, var(--c-accent) 50%, #000); }
-.how-bg .bd-imam .sil.hi { stroke: #fff; }
-.how-bg .bd-string { stroke: var(--c-accent-on-deep); }
-.how-bg .bd-tassel { stroke: var(--c-accent); stroke-width: 1.6; }
-@media (max-width: 860px) { .how-bg.hl { width: 150%; top: 50%; opacity: .32; } }
-
 /* ---------- the footer: a rope of lanterns across it, behind its text, lighting and swinging by themselves ---------- */
 .site-footer { isolation: isolate; overflow: hidden; }
 .site-footer > :not(.footer-bg) { position: relative; z-index: 1; }
