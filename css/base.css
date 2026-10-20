@@ -36,6 +36,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3, h4 { margin: 0; font-family: var(--f-display); font-weight: 600; text-wrap: balance; line-height: 1.35; }
 p { margin: 0; }
 
+/* anything marked hidden stays hidden, whatever its display rule */
+[hidden] { display: none !important; }
+
 :focus-visible {
   outline: 2px solid var(--c-accent);
   outline-offset: 3px;
@@ -139,3 +142,24 @@ html[data-brand="uns"] [data-brand-only="rattil"] { display: none !important; }
 .wordmark--uns svg { height: 1.35em; width: calc(1.35em * 247 / 201.4); }
 .brand-text .wordmark--uns { font-size: 1.85rem; margin-bottom: 2px; }
 .seg .wordmark--uns { font-size: 1.25rem; }
+
+/* ---------- page transition (js/transitions.js) ---------- */
+.page-curtain {
+  position: fixed; inset: 0; z-index: 300;
+  display: grid; place-items: center;
+  background: var(--c-deep);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path .48s cubic-bezier(.7, 0, .25, 1);
+  pointer-events: none;
+}
+.page-curtain.is-in { clip-path: inset(0 0 0 0); pointer-events: auto; }
+.page-curtain svg { width: 64px; height: 64px; fill: none; stroke: var(--c-accent); stroke-width: 3; animation: spin 1.6s linear infinite; }
+html.is-entering body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 300;
+  background: var(--c-deep);
+  pointer-events: none;
+  animation: curtain-out .65s cubic-bezier(.7, 0, .25, 1) .05s both;
+}
+@keyframes curtain-out { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(0 0 100% 0); } }
+@keyframes spin { to { transform: rotate(360deg); } }

@@ -74,7 +74,8 @@ window.Manasa = window.Manasa || {};
   function setBrand(id) {
     if (!BRANDS[id]) return;
     root.dataset.brand = id;
-    document.title = BRANDS[id].title;
+    var pageTitle = document.body && document.body.dataset.title;   /* inner pages keep their own title */
+    document.title = pageTitle ? pageTitle + ' — ' + BRANDS[id].name : BRANDS[id].title;
     syncControls();
     save();
     document.dispatchEvent(new CustomEvent('manasa:brand', { detail: id }));

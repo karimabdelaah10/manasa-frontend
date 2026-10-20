@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-palette="navy" data-brand="rattil">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2A44">
+  <title>التسجيل كطالب — رتّل</title>
+
+  <!-- saved name/palette + arrival curtain, before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem('manasa:brand') || '{}');
+        if (s.palette) document.documentElement.dataset.palette = s.palette;
+        if (s.brand) document.documentElement.dataset.brand = s.brand;
+        if (sessionStorage.getItem('manasa:nav')) { document.documentElement.classList.add('is-entering'); sessionStorage.removeItem('manasa:nav'); }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" type="image/png" href="images/brand/favicon.png">
+  <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css?v=202610200652">
+  <link rel="stylesheet" href="css/base.css?v=202610200652">
+  <link rel="stylesheet" href="css/symbols.css?v=202610200652">
+  <link rel="stylesheet" href="css/header.css?v=202610200652">
+  <link rel="stylesheet" href="css/switcher.css?v=202610200652">
+  <link rel="stylesheet" href="css/forms.css?v=202610200652">
+  <link rel="stylesheet" href="css/auth.css?v=202610200652">
+</head>
+<body class="auth" data-page="applyStudent" data-title="التسجيل كطالب">
+  <script src="js/sprite.js?v=202610200652"></script>
+
+  <!-- ===== Brand panel: the steps on desktop, a short top on phones ===== -->
+  <aside class="auth-brand">
+    <div class="symbols-layer" data-symbols="auth" data-density=".6" aria-hidden="true"></div>
+    <div class="auth-mtop">
+      <a class="back-link" href="index.html"><svg><use href="#i-arrow"/></svg>الرئيسية</a>
+      <span class="mini-brand">
+        <span class="wordmark wordmark--rattil" data-brand-only="rattil"><span class="wm-accent">رتّل</span><span class="wm-plain" aria-hidden="true">رتل</span></span>
+        <span class="wordmark wordmark--uns" data-brand-only="uns" aria-label="أُنس"><svg viewBox="0 0 247 201.4"><use href="#uns-wordmark"/></svg></span>
+      </span>
+    </div>
+    <a class="brand" href="index.html" aria-label="الصفحة الرئيسية">
+      <span class="brand-mark"><img data-logo="academy-nowave" src="images/logo/academy-navy-nowave.webp" alt="" width="58" height="58"></span>
+      <span class="brand-text">
+        <span class="wordmark wordmark--rattil" data-brand-only="rattil"><span class="wm-accent">رتّل</span><span class="wm-plain" aria-hidden="true">رتل</span></span>
+        <span class="wordmark wordmark--uns" data-brand-only="uns" aria-label="أُنس"><svg viewBox="0 0 247 201.4"><use href="#uns-wordmark"/></svg></span>
+        <span class="brand-tagline" data-brand-only="rattil">اقرأ، وارتقِ، ورتّل</span>
+        <span class="brand-tagline" data-brand-only="uns">في صُحبة القرآن… أُنس</span>
+      </span>
+    </a>
+    <div class="auth-brand-mid">
+      <img class="auth-emblem" data-logo="kids" src="images/logo/kids-navy.webp" alt="" width="200" height="200">
+      <div>
+        <h1>ابدأ رحلة الحفظ</h1>
+        <p class="lead hide-sm">خمس خطوات قصيرة، وتُحفظ إجاباتك أولًا بأول إن خرجت وعدت.</p>
+      </div>
+      <ol class="wiz-rail" data-wiz-rail aria-label="خطوات التسجيل"></ol>
+    </div>
+  </aside>
+
+  <!-- ===== Form ===== -->
+  <main class="auth-main">
+    <div class="auth-top">
+      <a class="back-link" href="index.html"><svg><use href="#i-arrow"/></svg>الرئيسية</a>
+      <span class="alt-link">لديك حساب؟ <a href="login.html">سجّل الدخول</a></span>
+    </div>
+
+    <div class="auth-card">
+      <p class="draft-note" hidden><svg><use href="#i-info"/></svg><span>استعدنا إجاباتك السابقة.</span><button type="button">ابدأ من جديد</button></p>
+
+      <div class="wiz-progress">
+        <div class="wiz-progress-top"><b data-wiz-title></b><span data-wiz-count></span></div>
+        <div class="wiz-bar"><i data-wiz-bar></i></div>
+      </div>
+
+      <form data-wizard data-key="student" novalidate>
+        <div class="wiz-viewport">
+
+          <!-- ① who -->
+          <section class="wiz-step" data-step data-title="لمن التسجيل؟">
+            <header class="wiz-in"><h2>لمن التسجيل؟</h2><p>اختر، وسنكمل الخطوات بحسب اختيارك.</p></header>
+            <div class="field wiz-in" data-required-group data-msg="اختر واحدًا من الثلاثة">
+              <div class="choice-grid">
+                <label class="choice">
+                  <input type="radio" name="for" value="child">
+                  <span class="choice-body">
+                    <span class="choice-ic"><img data-logo="kids" src="images/logo/kids-navy.webp" alt=""></span>
+                    <span class="choice-title">لطفلي أو أطفالي</span>
+                    <span class="choice-desc">من ٥ إلى ١٢ سنة، وتتابع تقاريرهم من حسابك.</span>
+                  </span>
+                  <span class="choice-tick"><svg><use href="#i-check"/></svg></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="for" value="self">
+                  <span class="choice-body">
+                    <span class="choice-ic"><img data-logo="adults" src="images/logo/adults-navy.webp" alt=""></span>
+                    <span class="choice-title">لنفسي</span>
+                    <span class="choice-desc">حفظ جديد أو تثبيت أو تصحيح تلاوة.</span>
+                  </span>
+                  <span class="choice-tick"><svg><use href="#i-check"/></svg></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="for" value="both">
+                  <span class="choice-body">
+                    <span class="choice-ic"><svg><use href="#i-people"/></svg></span>
+                    <span class="choice-title">لي ولأطفالي</span>
+                    <span class="choice-desc">الجميع في حساب واحد.</span>
+                  </span>
+                  <span class="choice-tick"><svg><use href="#i-check"/></svg></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- ② guardian / account owner -->
+          <section class="wiz-step" data-step data-title="بيانات الحساب">
+            <header class="wiz-in"><h2 data-acc-title>بيانات وليّ الأمر</h2><p>بهذا الحساب تدخل وتتابع.</p></header>
+            <div class="form-stack">
+              <div class="field wiz-in">
+                <label for="g-name">الاسم بالكامل</label>
+                <div class="control"><svg><use href="#i-user"/></svg><input id="g-name" name="g_name" autocomplete="name" required minlength="3" data-msg="اكتب اسمك" data-msg-short="اكتب الاسم كاملًا"></div>
+              </div>
+              <div class="field wiz-in">
+                <label for="g-phone">رقم الهاتف</label>
+                <div class="control control--phone control--select">
+                  <input id="g-phone" name="g_phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="01xxxxxxxxx" required pattern="[0-9 ]{7,15}" data-msg="اكتب رقم هاتفك" data-msg-pattern="الرقم غير صحيح، اكتبه أرقامًا فقط">
+                  <select name="g_code" aria-label="كود الدولة" data-codes></select>
+                </div>
+                <label class="agree" style="margin-top:6px"><input type="checkbox" name="g_wa_same" value="1" data-single checked> الرقم نفسه عليه واتساب</label>
+              </div>
+              <div class="reveal-box" data-wa hidden>
+                <div class="field">
+                  <label for="g-wa">رقم الواتساب</label>
+                  <div class="control control--phone"><input id="g-wa" name="g_wa" type="tel" inputmode="tel" placeholder="رقم الواتساب بكود الدولة" pattern="[0-9+ ]{7,16}" data-msg="اكتب رقم الواتساب" data-msg-pattern="الرقم غير صحيح"></div>
+                </div>
+              </div>
+              <div class="form-row wiz-in">
+                <div class="field">
+                  <label for="g-country">الدولة</label>
+                  <div class="control control--select"><svg><use href="#i-globe"/></svg><select id="g-country" name="g_country" required data-msg="اختر الدولة" data-countries></select></div>
+                </div>
+                <div class="field">
+                  <label for="g-email">الإيميل <small>(اختياري)</small></label>
+                  <div class="control"><svg><use href="#i-mail"/></svg><input id="g-email" name="g_email" type="email" class="ltr" autocomplete="email" placeholder="name@example.com"></div>
+                </div>
+              </div>
+              <div class="form-row wiz-in">
+                <div class="field">
+                  <label for="g-pass">كلمة المرور</label>
+                  <div class="control">
+                    <svg><use href="#i-lock"/></svg>
+                    <input id="g-pass" name="g_pass" type="password" autocomplete="new-password" required minlength="6" data-msg="اختر كلمة مرور" data-msg-short="٦ حروف على الأقل">
+                    <button type="button" class="pw-eye" aria-pressed="false" aria-label="إظهار كلمة المرور"><svg class="i-on"><use href="#i-eye"/></svg><svg class="i-off"><use href="#i-eye-off"/></svg></button>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="g-pass2">أكّد كلمة المرور</label>
+                  <div class="control">
+                    <svg><use href="#i-lock"/></svg>
+                    <input id="g-pass2" name="g_pass2" type="password" autocomplete="new-password" required data-match="#g-pass" data-msg="اكتبها مرة أخرى" data-msg-match="لا تطابق كلمة المرور">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ③ learners -->
+          <section class="wiz-step" data-step data-title="بيانات الطلاب">
+            <header class="wiz-in"><h2 data-learn-title>بيانات الطلاب</h2><p data-learn-lead>لنختار المجلس والمعلّم المناسبين.</p></header>
+            <div class="form-stack">
+              <div class="wiz-in" data-self-card hidden></div>
+              <div class="repeat-list wiz-in" data-kids></div>
+              <button type="button" class="add-btn wiz-in" data-add-kid><svg><use href="#i-plus"/></svg>أضف طفلًا آخر</button>
+            </div>
+          </section>
+
+          <!-- ④ preferences -->
+          <section class="wiz-step" data-step data-title="التفضيلات">
+            <header class="wiz-in"><h2>التفضيلات</h2><p>اختر ما يناسب كل طالب، وستنسّق الإدارة المواعيد معك.</p></header>
+            <div class="form-stack" data-prefs></div>
+          </section>
+
+          <!-- ⑤ review -->
+          <section class="wiz-step" data-step data-title="مراجعة وإرسال">
+            <header class="wiz-in"><h2>راجع قبل الإرسال</h2><p>يمكنك تعديل أي جزء من زر «تعديل».</p></header>
+            <div class="review wiz-in" data-review></div>
+            <div class="field wiz-in" style="margin-top:18px">
+              <label class="agree"><input type="checkbox" name="agree" value="1" data-single required data-msg="الموافقة مطلوبة للمتابعة"> أوافق على تواصل الإدارة معي بالهاتف والواتساب لتحديد المستوى والمواعيد.</label>
+            </div>
+          </section>
+
+        </div>
+
+        <div class="wiz-actions">
+          <button type="button" class="btn btn--soft btn--lg" data-prev hidden><svg style="transform:scaleX(-1)"><use href="#i-arrow"/></svg>رجوع</button>
+          <button type="button" class="btn btn--accent btn--lg" data-next><span class="lbl">التالي</span><svg><use href="#i-arrow"/></svg></button>
+          <button type="button" class="btn btn--accent btn--lg" data-submit hidden><span class="lbl">أرسل الطلب</span><svg><use href="#i-arrow"/></svg><span class="spin" aria-hidden="true"></span></button>
+        </div>
+      </form>
+
+      <!-- after sending -->
+      <div class="done" data-done>
+        <div class="done-mark" aria-hidden="true">
+          <svg viewBox="0 0 132 132"><path class="oct" d="M66 6 L84 24 L108 24 L108 48 L126 66 L108 84 L108 108 L84 108 L66 126 L48 108 L24 108 L24 84 L6 66 L24 48 L24 24 L48 24 Z"/><path class="tick" d="M44 67 L60 82 L90 50"/></svg>
+        </div>
+        <h2>وصل طلبك، بارك الله فيك</h2>
+        <p data-done-text>ستراجع الإدارة الطلب وتتواصل معك لتحديد المستوى، وبعد القبول يصلك رقم كل طالب لتدخل به.</p>
+        <div class="done-ids" data-done-ids></div>
+        <div class="done-actions">
+          <a class="btn btn--accent btn--lg" href="index.html">الصفحة الرئيسية</a>
+          <a class="btn btn--soft btn--lg" href="login.html">تسجيل الدخول</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/vendor/gsap.min.js?v=202610200652"></script>
+  <script src="js/vendor/ScrollTrigger.min.js?v=202610200652"></script>
+  <script src="js/brand.js?v=202610200652"></script>
+  <script src="js/logo-waves.js?v=202610200652"></script>
+  <script src="js/symbols.js?v=202610200652"></script>
+  <script src="js/forms.js?v=202610200652"></script>
+  <script src="js/sparkle.js?v=202610200652"></script>
+  <script src="js/wizard.js?v=202610200652"></script>
+  <script src="js/lists.js?v=202610200652"></script>
+  <script src="js/apply-student.js?v=202610200652"></script>
+  <script src="js/transitions.js?v=202610200652"></script>
+  <script src="js/auth.js?v=202610200652"></script>
+</body>
+</html>

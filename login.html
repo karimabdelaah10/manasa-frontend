@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-palette="navy" data-brand="rattil">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2A44">
+  <title>تسجيل الدخول — رتّل</title>
+  <meta name="robots" content="noindex">
+
+  <!-- apply the saved name/palette before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem('manasa:brand') || '{}');
+        if (s.palette) document.documentElement.dataset.palette = s.palette;
+        if (s.brand) document.documentElement.dataset.brand = s.brand;
+        if (sessionStorage.getItem('manasa:nav')) { document.documentElement.classList.add('is-entering'); sessionStorage.removeItem('manasa:nav'); }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" type="image/png" href="images/brand/favicon.png">
+  <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css?v=202610200652">
+  <link rel="stylesheet" href="css/base.css?v=202610200652">
+  <link rel="stylesheet" href="css/symbols.css?v=202610200652">
+  <link rel="stylesheet" href="css/header.css?v=202610200652">
+  <link rel="stylesheet" href="css/switcher.css?v=202610200652">
+  <link rel="stylesheet" href="css/forms.css?v=202610200652">
+  <link rel="stylesheet" href="css/auth.css?v=202610200652">
+</head>
+<body class="auth" data-page="login" data-title="تسجيل الدخول">
+  <script src="js/sprite.js?v=202610200652"></script>
+
+  <!-- ===== Brand panel (beside the form on desktop, a short top on phones) ===== -->
+  <aside class="auth-brand">
+    <div class="symbols-layer" data-symbols="auth" data-density=".6" aria-hidden="true"></div>
+    <div class="auth-mtop">
+      <a class="back-link" href="index.html"><svg><use href="#i-arrow"/></svg>الرئيسية</a>
+      <span class="mini-brand">
+        <span class="wordmark wordmark--rattil" data-brand-only="rattil"><span class="wm-accent">رتّل</span><span class="wm-plain" aria-hidden="true">رتل</span></span>
+        <span class="wordmark wordmark--uns" data-brand-only="uns" aria-label="أُنس"><svg viewBox="0 0 247 201.4"><use href="#uns-wordmark"/></svg></span>
+      </span>
+    </div>
+    <a class="brand" href="index.html" aria-label="الصفحة الرئيسية">
+      <span class="brand-mark"><img data-logo="academy-nowave" src="images/logo/academy-navy-nowave.webp" alt="" width="58" height="58"></span>
+      <span class="brand-text">
+        <span class="wordmark wordmark--rattil" data-brand-only="rattil"><span class="wm-accent">رتّل</span><span class="wm-plain" aria-hidden="true">رتل</span></span>
+        <span class="wordmark wordmark--uns" data-brand-only="uns" aria-label="أُنس"><svg viewBox="0 0 247 201.4"><use href="#uns-wordmark"/></svg></span>
+        <span class="brand-tagline" data-brand-only="rattil">اقرأ، وارتقِ، ورتّل</span>
+        <span class="brand-tagline" data-brand-only="uns">في صُحبة القرآن… أُنس</span>
+      </span>
+    </a>
+    <div class="auth-brand-mid">
+      <div class="auth-logo" aria-hidden="true">
+        <svg class="ring"><use href="#octagram" fill="none" stroke="currentColor" stroke-width=".35" stroke-dasharray="1.2 2.2"/></svg>
+        <div class="logo-stack">
+          <img data-logo="academy-nowave" src="images/logo/academy-navy-nowave.webp" alt="" width="1024" height="1024">
+          <svg class="logo-waves" data-waves viewBox="0 0 1024 1024"></svg>
+        </div>
+      </div>
+      <div>
+        <h1>أهلاً بعودتك</h1>
+        <p class="lead">ادخل إلى حسابك وتابع حلقاتك وتقارير معلّمك.</p>
+      </div>
+      <p class="auth-quote">
+        <span data-brand-only="rattil">﴿ وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا ﴾</span>
+        <span data-brand-only="uns">﴿ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ ﴾</span>
+      </p>
+    </div>
+  </aside>
+
+  <!-- ===== Form ===== -->
+  <main class="auth-main">
+    <div class="auth-top">
+      <a class="back-link" href="index.html"><svg><use href="#i-arrow"/></svg>الرئيسية</a>
+      <span class="alt-link">جديد هنا؟ <a href="apply-student.html">سجّل الآن</a></span>
+    </div>
+    <div class="auth-card">
+      <header>
+        <h2>تسجيل الدخول</h2>
+        <p>اختر نوع حسابك وادخل برقم هاتفك.</p>
+      </header>
+
+      <form class="form-stack" data-login novalidate>
+        <div class="field login-switch">
+          <div class="pills" role="radiogroup" aria-label="نوع الحساب">
+            <label><input type="radio" name="role" value="student" checked><span><svg width="18" height="18"><use href="#i-user"/></svg>طالب أو وليّ أمر</span></label>
+            <label><input type="radio" name="role" value="teacher"><span><svg width="18" height="18"><use href="#i-award"/></svg>معلّم</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="login-phone">رقم الهاتف</label>
+          <div class="control control--phone control--select">
+            <input id="login-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="01xxxxxxxxx" required pattern="[0-9 ]{7,15}" data-msg="اكتب رقم هاتفك" data-msg-pattern="الرقم غير صحيح، اكتبه أرقامًا فقط">
+            <select name="code" aria-label="كود الدولة">
+              <option value="+20" selected>+20 مصر</option><option value="+966">+966 السعودية</option><option value="+971">+971 الإمارات</option>
+              <option value="+965">+965 الكويت</option><option value="+974">+974 قطر</option><option value="+973">+973 البحرين</option>
+              <option value="+968">+968 عُمان</option><option value="+962">+962 الأردن</option><option value="+212">+212 المغرب</option>
+              <option value="+213">+213 الجزائر</option><option value="+216">+216 تونس</option><option value="+44">+44 بريطانيا</option>
+              <option value="+1">+1 أمريكا وكندا</option><option value="+49">+49 ألمانيا</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- shown when the phone belongs to more than one account (e.g. a family) -->
+        <div class="reveal-box" data-shared hidden>
+          <div class="form-stack">
+            <p class="notice"><svg><use href="#i-info"/></svg><span>هذا الرقم مرتبط بأكثر من طالب. اكتب <b>رقم الطالب</b> الذي ستدخل به، وتجده في رسالة قبول التسجيل.</span></p>
+            <div class="field">
+              <label for="login-shared">رقم الطالب</label>
+              <div class="control">
+                <svg><use href="#i-hash"/></svg>
+                <input id="login-shared" name="shared_account" class="ltr" inputmode="numeric" placeholder="مثلاً 10234" pattern="[0-9]{4,8}" data-msg="اكتب رقم الطالب" data-msg-pattern="رقم الطالب أرقام فقط (من ٤ إلى ٨)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="login-pass">كلمة المرور</label>
+          <div class="control">
+            <svg><use href="#i-lock"/></svg>
+            <input id="login-pass" name="password" type="password" autocomplete="current-password" required minlength="6" data-msg="اكتب كلمة المرور" data-msg-short="كلمة المرور ٦ حروف على الأقل">
+            <button type="button" class="pw-eye" aria-pressed="false" aria-label="إظهار كلمة المرور"><svg class="i-on"><use href="#i-eye"/></svg><svg class="i-off"><use href="#i-eye-off"/></svg></button>
+          </div>
+          <button type="button" class="inline-link" style="align-self:flex-start" data-forgot>نسيت كلمة المرور؟</button>
+        </div>
+
+        <div class="reveal-box" data-forgot-box hidden>
+          <p class="notice"><svg><use href="#i-phone"/></svg><span>تواصل مع الإدارة على واتساب <b>[رقم واتساب]</b> لإرسال كلمة مرور جديدة.</span></p>
+        </div>
+
+        <p class="notice notice--error" data-login-error hidden><svg><use href="#i-alert"/></svg><span></span></p>
+        <p class="notice notice--ok" data-login-ok hidden><svg><use href="#i-check"/></svg><span></span></p>
+
+        <button type="submit" class="btn btn--accent btn--lg" data-login-submit><span class="lbl">دخول</span><svg><use href="#i-arrow"/></svg><span class="spin" aria-hidden="true"></span></button>
+      </form>
+
+      <div class="login-foot">
+        <span>لست مسجّلًا؟ <a href="apply-student.html">سجّل كطالب أو وليّ أمر</a></span>
+        <span>معلّم قرآن؟ <a href="apply-teacher.html">قدّم كمعلّم</a></span>
+      </div>
+
+      <!-- test accounts while there's no backend; remove when the API is connected -->
+      <details class="demo-box">
+        <summary><svg><use href="#i-info"/></svg>حسابات للتجربة (مؤقتة)</summary>
+        <ul>
+          <li>معلّم: <code>01011112222</code></li>
+          <li>طالب: <code>01055556666</code></li>
+          <li>رقم أسرة مشترك: <code>01033334444</code> ثم رقم الطالب <code>10234</code> (يوسف) أو <code>10235</code> (مريم)</li>
+          <li>كلمة المرور لكل الحسابات: <code>123456</code></li>
+        </ul>
+      </details>
+    </div>
+  </main>
+
+  <script src="js/vendor/gsap.min.js?v=202610200652"></script>
+  <script src="js/vendor/ScrollTrigger.min.js?v=202610200652"></script>
+  <script src="js/brand.js?v=202610200652"></script>
+  <script src="js/logo-waves.js?v=202610200652"></script>
+  <script src="js/symbols.js?v=202610200652"></script>
+  <script src="js/forms.js?v=202610200652"></script>
+  <script src="js/sparkle.js?v=202610200652"></script>
+  <script src="js/login.js?v=202610200652"></script>
+  <script src="js/transitions.js?v=202610200652"></script>
+  <script src="js/auth.js?v=202610200652"></script>
+</body>
+</html>

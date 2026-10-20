@@ -51,6 +51,11 @@
   --symbol-opacity: .26;
   --c-line: rgba(15, 42, 68, .12);
   --c-line-on-deep: rgba(237, 232, 218, .16);
+  /* states (same in every palette) */
+  --c-danger: #B42318;
+  --c-danger-bg: #FDECEA;
+  --c-success: #1D5B33;
+  --c-success-bg: #DDEFE3;
 }
 
 /* ---------- أخضر وبرتقالي (brand guide, 18 Oct) + two darker greens ---------- */

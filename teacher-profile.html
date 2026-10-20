@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-palette="navy" data-brand="rattil">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0F2A44">
+  <title>صفحة المعلّم — رتّل</title>
+  <meta name="robots" content="noindex">
+
+  <!-- saved name/palette + arrival curtain, before first paint -->
+  <script>
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem('manasa:brand') || '{}');
+        if (s.palette) document.documentElement.dataset.palette = s.palette;
+        if (s.brand) document.documentElement.dataset.brand = s.brand;
+        if (sessionStorage.getItem('manasa:nav')) { document.documentElement.classList.add('is-entering'); sessionStorage.removeItem('manasa:nav'); }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" type="image/png" href="images/brand/favicon.png">
+  <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css?v=202610200652">
+  <link rel="stylesheet" href="css/base.css?v=202610200652">
+  <link rel="stylesheet" href="css/header.css?v=202610200652">
+  <link rel="stylesheet" href="css/switcher.css?v=202610200652">
+  <link rel="stylesheet" href="css/forms.css?v=202610200652">
+  <link rel="stylesheet" href="css/auth.css?v=202610200652">
+  <link rel="stylesheet" href="css/app.css?v=202610200652">
+</head>
+<body class="app" data-page="teacherProfile" data-title="صفحة المعلّم">
+  <script src="js/sprite.js?v=202610200652"></script>
+
+  <aside class="app-side" data-side></aside>
+  <header class="app-top" data-top></header>
+
+  <main class="app-main">
+    <div class="app-wrap" data-root>
+      <div class="empty"><svg><use href="#i-clock"/></svg>جارٍ التحميل…</div>
+    </div>
+  </main>
+
+  <nav data-tabs></nav>
+
+  <script src="js/vendor/gsap.min.js?v=202610200652"></script>
+  <script src="js/vendor/ScrollTrigger.min.js?v=202610200652"></script>
+  <script src="js/brand.js?v=202610200652"></script>
+  <script src="js/forms.js?v=202610200652"></script>
+  <script src="js/data.js?v=202610200652"></script>
+  <script src="js/transitions.js?v=202610200652"></script>
+  <script src="js/app.js?v=202610200652"></script>
+  <script src="js/teacher-common.js?v=202610200652"></script>
+  <script src="js/profile.js?v=202610200652"></script>
+</body>
+</html>

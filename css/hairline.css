@@ -1,0 +1,33 @@
+/* =========================================================
+   Hairline figures in our palette. The kernel draws with five
+   strokes; each maps to a token, on light and on deep grounds.
+   ========================================================= */
+.hl {
+  --hairline-plate: var(--c-ground);
+  --hairline-hi: var(--c-accent-text);
+  --hairline-edge: color-mix(in srgb, var(--c-ink) 55%, var(--c-ground));
+  --hairline-mid: color-mix(in srgb, var(--c-ink) 32%, var(--c-ground));
+  --hairline-lo: color-mix(in srgb, var(--c-ink) 16%, var(--c-ground));
+  --hairline-stroke: 1.1;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  width: 100%;
+}
+.hl [data-hairline] { width: 100%; }
+.hl--surface { --hairline-plate: var(--c-surface); }
+.hl--deep {
+  --hairline-plate: var(--c-deep);
+  --hairline-hi: var(--c-accent-on-deep);
+  --hairline-edge: color-mix(in srgb, var(--c-on-deep) 58%, var(--c-deep));
+  --hairline-mid: color-mix(in srgb, var(--c-on-deep) 34%, var(--c-deep));
+  --hairline-lo: color-mix(in srgb, var(--c-on-deep) 18%, var(--c-deep));
+}
+.hl-read {
+  min-height: 1.6em;
+  font-family: var(--f-display); font-weight: 600; font-size: var(--fs-sm);
+  color: var(--c-muted);
+  transition: color .3s ease;
+}
+.hl-read.is-live { color: var(--c-accent-text); }
+.hl--deep .hl-read { color: var(--c-on-deep-muted); }
+.hl--deep .hl-read.is-live { color: var(--c-accent-on-deep); }
