@@ -71,3 +71,21 @@
   .footer-bottom { flex-direction: column; justify-content: center; text-align: center; gap: 6px; }
   .to-top { min-height: 44px; padding: 0 16px; }
 }
+
+/* ---------- footer lanterns: thin gold lines hanging from the top, swaying; now and then one lights ---------- */
+.site-footer { isolation: isolate; overflow: hidden; padding-top: clamp(130px, 12vw, 160px); }
+.site-footer > :not(.footer-lanterns) { position: relative; z-index: 1; }
+.footer-lanterns { position: absolute; inset: 0 0 auto 0; height: 280px; z-index: 0; pointer-events: none; color: var(--c-accent-on-deep); opacity: .75; }
+.footer-lanterns .lan { position: absolute; top: 0; left: var(--l); width: calc(26px * var(--s)); transform-origin: 50% 0; animation: lan-sway var(--d) ease-in-out var(--dl) infinite alternate; }
+.footer-lanterns .lan i { display: block; width: 1px; height: var(--c); margin: 0 auto; background: linear-gradient(transparent, color-mix(in srgb, var(--c-accent) 60%, transparent)); }
+.footer-lanterns .lan svg { display: block; width: 100%; height: auto; margin-top: -2px; }
+.footer-lanterns .lan-glow { fill: var(--c-accent); opacity: 0; animation: lan-lit 9s ease-in-out var(--ld) infinite; }
+.footer-lanterns .lan:nth-child(odd) .lan-glow { animation-duration: 11s; }
+@keyframes lan-sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@keyframes lan-lit { 0%, 70%, 100% { opacity: 0; } 80%, 90% { opacity: .9; } }
+@media (max-width: 700px) {
+  .footer-lanterns .lan:nth-child(odd):not(:first-child) { display: none; }   /* half of them on a phone */
+  .footer-lanterns .lan { width: calc(24px * var(--s)); }
+  .site-footer { padding-top: 130px; }
+}
+@media (prefers-reduced-motion: reduce) { .footer-lanterns .lan, .footer-lanterns .lan-glow { animation: none; } }

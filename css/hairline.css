@@ -31,27 +31,3 @@
 .hl-read.is-live { color: var(--c-accent-text); }
 .hl--deep .hl-read { color: var(--c-on-deep-muted); }
 .hl--deep .hl-read.is-live { color: var(--c-accent-on-deep); }
-
-/* ---------- the footer: a rope of lanterns across it, behind its text, lighting and swinging by themselves ---------- */
-.site-footer { isolation: isolate; overflow: hidden; }
-.site-footer > :not(.footer-bg) { position: relative; z-index: 1; }
-.footer-bg.hl { position: absolute; inset: 0; z-index: 0; width: auto; pointer-events: none; opacity: .45; display: block; }
-/* phones: the footer is tall and narrow, so the rope runs across its top as a strip */
-@media (max-width: 860px) { .footer-bg.hl { inset: 0 0 auto 0; height: 200px; opacity: .5; } }
-.footer-bg [data-hairline] { width: 100%; height: 100%; touch-action: auto; }
-.footer-bg .lt-rope { stroke: var(--c-accent-on-deep); }
-.footer-bg .lt-cord { stroke: color-mix(in srgb, var(--c-accent) 70%, var(--c-deep)); }
-.footer-bg .lt-post .sil { fill: color-mix(in srgb, var(--c-accent) 35%, var(--c-deep)); stroke: color-mix(in srgb, var(--c-accent) 60%, var(--c-deep)); }
-.footer-bg .lt-metal .sil { fill: var(--c-accent); stroke: color-mix(in srgb, var(--c-accent) 55%, #000); }
-.footer-bg .lt-metal .lo { stroke: color-mix(in srgb, var(--c-accent) 50%, #fff); }
-.footer-bg .lt--b .lt-metal .sil { fill: color-mix(in srgb, var(--c-accent) 75%, #fff); }
-.footer-bg .lt--c .lt-metal .sil { fill: color-mix(in srgb, var(--c-accent) 80%, #000); }
-.footer-bg .lt-glass .sil { fill: color-mix(in srgb, var(--c-accent) 22%, var(--c-deep)); stroke: color-mix(in srgb, var(--c-accent) 55%, #000); }
-.footer-bg .lt--b .lt-glass .sil { fill: color-mix(in srgb, #3FA9A0 40%, var(--c-deep)); }
-.footer-bg .lt--c .lt-glass .sil { fill: color-mix(in srgb, #C8553D 40%, var(--c-deep)); }
-.footer-bg .lt-ribs { stroke: var(--c-accent); }
-.footer-bg .lt-door { fill: color-mix(in srgb, var(--c-accent) 30%, var(--c-deep)); stroke: var(--c-accent); }
-.footer-bg .lt.is-lit .lt-glass .sil { fill: #F7C766; stroke: #FFE3A3; }
-.footer-bg .lt.is-lit .lt-metal .sil { stroke: #FFE3A3; }
-.footer-bg .lt-flame { fill: #FF9F2E; stroke: #FFD27A; }
-.footer-bg .lt.is-lit { filter: drop-shadow(0 0 10px rgba(255, 196, 92, .55)); }
