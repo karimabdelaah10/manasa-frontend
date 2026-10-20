@@ -47,7 +47,7 @@ body.auth {
 .auth-logo .ring { position: absolute; inset: -16%; width: 132%; height: 132%; color: var(--c-accent); animation: spin 90s linear infinite; }
 .auth-logo .logo-stack { position: absolute; inset: 0; filter: drop-shadow(0 26px 36px rgba(0, 0, 0, .45)); }
 .auth-logo .logo-stack img, .auth-logo .logo-stack svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.auth-emblem { width: clamp(130px, 14vw, 170px); filter: drop-shadow(0 20px 30px rgba(0, 0, 0, .45)); }
+.auth-emblem { width: clamp(130px, 14vw, 170px); height: auto; aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0, 0, 0, .45)); }
 
 .auth-brand h1 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: #fff; }
 .auth-brand .lead { color: var(--c-on-deep-muted); max-width: 26rem; }

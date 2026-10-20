@@ -49,17 +49,18 @@ function mount({ stage, svg, read }, value) {
   const P = proj(C), front = facing(C);
 
   const g = mk("g", {}, svg);
-  const string = mk("path", { class: "nf lo" }, g);            // painted first: the beads cover it, it shows between them
+  const string = mk("path", { class: "nf lo bd-string" }, g);            // painted first: the beads cover it, it shows between them
   const bg = mk("g", {}, g);
-  for (const b of beads) b.el = solid(bg);
+  for (const b of beads) { b.el = solid(bg); b.el.g.setAttribute("class", "bd-bead"); }
   const imam = solid(g), cap = solid(g);
+  imam.g.setAttribute("class", "bd-imam"); cap.g.setAttribute("class", "bd-imam");
   {
     const [r, n] = rings(ix - IR, iy - IR, ix + IR, iy + IR, IR, 0.8);
     put(imam, prism(P, front, r, n, 0, IH));
     const [r2, n2] = rings(ix - R * 0.7, iy - R * 0.7, ix + R * 0.7, iy + R * 0.7, R * 0.7, 0.5);
     put(cap, prism(P, front, r2, n2, IH, IH + R * 1.2));
   }
-  const tassel = mk("path", { class: "nf" }, g);                // lying on the ground in front of the imam bead
+  const tassel = mk("path", { class: "nf bd-tassel" }, g);                // lying on the ground in front of the imam bead
   {
     let d = "";
     for (let k = -2; k <= 2; k++) {
@@ -118,6 +119,8 @@ function mount({ stage, svg, read }, value) {
     B2.wake();
   }
   setCount(0);
+  // for the site's self-playing lap: points on the loop that count to 5, 11, 17, 23, 29 and 33
+  stage.dataset.autoStops = JSON.stringify([5, 11, 17, 23, 29, 33].map((c) => { const q = at(GAP + (c - 1) * step); const p = P(q[0], q[1], H / 2); return [Math.round(p[0]), Math.round(p[1])]; }));
 
   bag.add(pointer(stage, { move: (p) => { const c = hit(p); setCount(c < 0 ? 0 : c); }, leave: () => setCount(0) }));
   bag.add(() => svg.replaceChildren());

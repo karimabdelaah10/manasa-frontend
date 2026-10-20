@@ -44,7 +44,7 @@
   isolation: isolate;
   overflow: clip;
   background: var(--c-ground);
-  padding-block: clamp(72px, 12vw, 150px) clamp(28px, 4vw, 56px);   /* less below: the programs follow closely */
+  padding-block: clamp(64px, 10vw, 130px);
   text-align: center;
   transition: background-color var(--t-theme) ease;
 }
@@ -55,16 +55,7 @@
   flex-direction: column;
   gap: clamp(8px, 2vw, 18px);
 }
-/* the slogan keeps the page's width; the stairs stand small beside it, at the left
-   (on narrower screens, where there is no room beside it, they sit under it) */
 .slogan-copy { display: flex; flex-direction: column; align-items: center; gap: clamp(18px, 3vw, 28px); min-width: 0; width: 100%; }
-.slogan-figure.hl { order: 2; width: 150px; align-self: flex-end; margin-top: -6px; }
-@media (min-width: 1100px) {
-  .slogan-figure.hl { position: absolute; inset-inline-end: 0; top: 50%; transform: translateY(-50%); margin: 0; }
-}
-@media (max-width: 860px) {
-  .slogan-figure.hl { width: 130px; }
-}
 .slogan-text {
   margin: 0;
   font-family: var(--f-display);
@@ -102,5 +93,12 @@
   .slogan-text { font-size: clamp(2.3rem, 12vw, 3.2rem); }
 }
 
-/* the programs come right after the slogan: no double gap between them */
-.slogan-band + .programs { padding-top: clamp(32px, 5vw, 64px); }
+/* a simple deep band between the slogan and the programs */
+.navy-divider {
+  display: grid; place-items: center;
+  height: clamp(44px, 6vw, 64px);
+  background: var(--c-deep);
+  transition: background-color var(--t-theme) ease;
+}
+.navy-divider svg { width: min(240px, 60vw); height: auto; fill: none; stroke: var(--c-accent); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; overflow: visible; }
+.navy-divider + .programs { padding-top: clamp(48px, 7vw, 96px); }

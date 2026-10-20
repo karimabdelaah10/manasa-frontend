@@ -31,30 +31,30 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
 
   <link rel="preload" as="image" href="images/logo/academy-navy-nowave.webp">
-  <link rel="stylesheet" href="css/tokens.css?v=202610200838">
-  <link rel="stylesheet" href="css/base.css?v=202610200838">
-  <link rel="stylesheet" href="css/symbols.css?v=202610200838">
-  <link rel="stylesheet" href="css/header.css?v=202610200838">
-  <link rel="stylesheet" href="css/hero.css?v=202610200838">
-  <link rel="stylesheet" href="css/switcher.css?v=202610200838">
-  <link rel="stylesheet" href="css/slogan.css?v=202610200838">
-  <link rel="stylesheet" href="css/sections.css?v=202610200838">
-  <link rel="stylesheet" href="css/programs.css?v=202610200838">
-  <link rel="stylesheet" href="css/how.css?v=202610200838">
-  <link rel="stylesheet" href="css/family.css?v=202610200838">
-  <link rel="stylesheet" href="css/types.css?v=202610200838">
-  <link rel="stylesheet" href="css/teach.css?v=202610200838">
-  <link rel="stylesheet" href="css/faq.css?v=202610200838">
-  <link rel="stylesheet" href="css/cta.css?v=202610200838">
-  <link rel="stylesheet" href="css/hairline.css?v=202610200838">
+  <link rel="stylesheet" href="css/tokens.css?v=202610201123">
+  <link rel="stylesheet" href="css/base.css?v=202610201123">
+  <link rel="stylesheet" href="css/symbols.css?v=202610201123">
+  <link rel="stylesheet" href="css/header.css?v=202610201123">
+  <link rel="stylesheet" href="css/hero.css?v=202610201123">
+  <link rel="stylesheet" href="css/switcher.css?v=202610201123">
+  <link rel="stylesheet" href="css/slogan.css?v=202610201123">
+  <link rel="stylesheet" href="css/sections.css?v=202610201123">
+  <link rel="stylesheet" href="css/programs.css?v=202610201123">
+  <link rel="stylesheet" href="css/how.css?v=202610201123">
+  <link rel="stylesheet" href="css/family.css?v=202610201123">
+  <link rel="stylesheet" href="css/types.css?v=202610201123">
+  <link rel="stylesheet" href="css/teach.css?v=202610201123">
+  <link rel="stylesheet" href="css/faq.css?v=202610201123">
+  <link rel="stylesheet" href="css/cta.css?v=202610201123">
+  <link rel="stylesheet" href="css/hairline.css?v=202610201123">
 </head>
 <body>
   <!-- loader: the star turns round the still picture; the count shows how much has loaded -->
-  <div class="loader" aria-hidden="true"><div class="loader-logo"><i class="loader-frame"></i><i class="loader-art"></i></div><p class="loader-count"><b data-loader-num>٠</b>٪</p></div>
+  <div class="loader" aria-hidden="true"><div class="symbols-layer" data-symbols="loader" data-density=".7"></div><div class="loader-logo"><i class="loader-frame"></i><i class="loader-art"></i></div><p class="loader-count"><b data-loader-num>٠</b>٪</p></div>
 
 
   <!-- ===== Shared SVG icons (js/sprite.js) ===== -->
-  <script src="js/sprite.js?v=202610200838"></script>
+  <script src="js/sprite.js?v=202610201123"></script>
 
   <!-- ===== Header ===== -->
   <header class="site-header" data-header>
@@ -165,9 +165,6 @@
     <section class="slogan-band" aria-label="شعار الأكاديمية" data-slogan-band>
       <div class="symbols-layer symbols-layer--light" data-symbols="slogan" data-density=".6" aria-hidden="true"></div>
       <div class="container slogan-inner">
-        <div class="slogan-figure hl" data-hl="stairs" data-hl-label="سلّم من ثلاثين درجة، درجة لكل جزء">
-          <p class="hl-read" data-hl-read>من جزء عمّ… إلى الختمة</p>
-        </div>
         <div class="slogan-copy">
         <svg class="slogan-orn" viewBox="0 0 600 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true" data-slogan-orn>
           <path d="M0 20 H230"/><path d="M370 20 H600"/>
@@ -187,6 +184,9 @@
     </section>
 
     <!-- ===== البرامج ===== -->
+    <div class="navy-divider" aria-hidden="true">
+      <svg viewBox="0 0 240 24"><path d="M0 12H92M148 12H240"/><path d="M104 12l8-8 8 8-8 8z"/><path d="M120 12l8-8 8 8-8 8z"/><path d="M96 12l-4-4-4 4 4 4zM144 12l4-4 4 4-4 4z"/></svg>
+    </div>
     <section class="programs section" id="programs" aria-labelledby="programs-title" data-programs>
       <div class="symbols-layer symbols-layer--light" data-symbols="programs" aria-hidden="true"></div>
 
@@ -318,9 +318,7 @@
           </li>
         </ol>
         </div>
-        <div class="how-figure hl hl--deep" data-hl="beads" data-hl-label="سبحة من ثلاث وثلاثين حبة، مرّر عليها لتعدّ">
-          <p class="hl-read" data-hl-read>مرّر على السبحة لتعدّ</p>
-        </div>
+        <div class="how-bg hl hl--deep" data-hl="beads" data-hl-auto aria-hidden="true"></div>
       </div>
     </section>
 
@@ -470,7 +468,7 @@
             <svg class="logo-waves" data-waves viewBox="0 0 1024 1024"></svg>
           </div>
         </div>
-        <p class="cta-ayah" id="cta-title" data-reveal>﴿ وَلَقَدْ يَسَّرْنَا ٱلْقُرْءَانَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ ﴾</p>
+        <p class="cta-ayah" id="cta-title" data-reveal><span class="nw">﴿&nbsp;وَلَقَدْ</span> يَسَّرْنَا ٱلْقُرْءَانَ لِلذِّكْرِ<br class="ayah-br"> فَهَلْ مِن <span class="nw">مُّدَّكِرٍ&nbsp;﴾</span></p>
         <p class="cta-lead" data-reveal>ابدأ اليوم، وخطوة صغيرة كل حلقة تصنع حافظًا.</p>
         <div class="cta-actions" data-reveal>
           <a class="btn btn--accent btn--lg" href="apply-student.html" data-magnetic>سجّل الآن <svg><use href="#i-arrow"/></svg></a>
@@ -482,6 +480,7 @@
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
+    <div class="footer-bg hl hl--deep" data-hl="lanterns" data-hl-auto data-hl-fill aria-hidden="true"></div>
     <div class="container footer-grid">
       <div class="footer-brand">
         <a class="brand" href="#top" aria-label="العودة لأعلى الصفحة">
@@ -512,9 +511,6 @@
           <li><svg><use href="#i-mail"/></svg><span>[البريد الإلكتروني]</span></li>
         </ul>
       </div>
-    </div>
-    <div class="container footer-lanterns">
-      <div class="hl hl--deep footer-hl" data-hl="lanterns" data-hl-auto data-hl-viewbox="0 70 400 215" data-hl-label="فوانيس رمضان معلّقة على حبل، تضيء وتتمرجح"></div>
     </div>
     <div class="container footer-bottom">
       <span>© <span data-brand-only="rattil">رتّل</span><span data-brand-only="uns">أُنس</span> — جميع الحقوق محفوظة</span>
@@ -562,25 +558,24 @@
   </div>
   <div class="switcher-scrim" data-switcher-scrim></div>
 
-  <script src="js/vendor/gsap.min.js?v=202610200838"></script>
-  <script src="js/vendor/ScrollTrigger.min.js?v=202610200838"></script>
-  <script src="js/vendor/lenis.min.js?v=202610200838"></script>
-  <script src="js/brand.js?v=202610200838"></script>
-  <script src="js/logo-waves.js?v=202610200838"></script>
-  <script src="js/symbols.js?v=202610200838"></script>
-  <script src="js/header.js?v=202610200838"></script>
-  <script src="js/hero.js?v=202610200838"></script>
-  <script src="js/slogan.js?v=202610200838"></script>
-  <script src="js/reveal.js?v=202610200838"></script>
-  <script src="js/programs.js?v=202610200838"></script>
-  <script src="js/sections.js?v=202610200838"></script>
-  <script src="js/transitions.js?v=202610200838"></script>
-  <script src="js/pageturn.js?v=202610200838"></script>
-  <script src="js/main.js?v=202610200838"></script>
-  <script src="js/hairline/kernel.js?v=202610200838"></script>
-  <script src="js/hairline/host.js?v=202610200838"></script>
-  <script type="module" src="js/hairline/stairs.js?v=202610200838"></script>
-  <script type="module" src="js/hairline/beads.js?v=202610200838"></script>
-  <script type="module" src="js/hairline/lanterns.js?v=202610200838"></script>
+  <script src="js/vendor/gsap.min.js?v=202610201123"></script>
+  <script src="js/vendor/ScrollTrigger.min.js?v=202610201123"></script>
+  <script src="js/vendor/lenis.min.js?v=202610201123"></script>
+  <script src="js/brand.js?v=202610201123"></script>
+  <script src="js/logo-waves.js?v=202610201123"></script>
+  <script src="js/symbols.js?v=202610201123"></script>
+  <script src="js/header.js?v=202610201123"></script>
+  <script src="js/hero.js?v=202610201123"></script>
+  <script src="js/slogan.js?v=202610201123"></script>
+  <script src="js/reveal.js?v=202610201123"></script>
+  <script src="js/programs.js?v=202610201123"></script>
+  <script src="js/sections.js?v=202610201123"></script>
+  <script src="js/transitions.js?v=202610201123"></script>
+  <script src="js/pageturn.js?v=202610201123"></script>
+  <script src="js/main.js?v=202610201123"></script>
+  <script src="js/hairline/kernel.js?v=202610201123"></script>
+  <script src="js/hairline/host.js?v=202610201123"></script>
+  <script type="module" src="js/hairline/beads.js?v=202610201123"></script>
+  <script type="module" src="js/hairline/lanterns.js?v=202610201123"></script>
 </body>
 </html>

@@ -14,28 +14,32 @@
  */
 const { Cam, clamp, fit, proj, hull, poly, open, seg, spring, stepS, tween, tset, tval, tdone, mk, pointer, put, register, disposer, solid } = HL;
 
-const N = 7, GAPH = 30, TOP = 74, SAG = 12, POST = 104, SQ = Math.SQRT1_2, STAGGER = 70;
+const GAPH = 30, TOP = 74, SAG = 12, POST = 104, SQ = Math.SQRT1_2, STAGGER = 70;
 const world = (h, d, z) => [(h + d) * SQ, (d - h) * SQ, z];      // h runs right on screen, d towards the viewer
 // a fanous, its foot at z = 0: [z0, r0, z1, r1] for each part, bottom to top
 const PROFILE = [[0, 3.2, 1.6, 3.2], [1.6, 3.6, 6, 7.5], [6, 7.5, 17, 7.5], [17, 8.6, 18.4, 8.6], [18.4, 8, 24.5, 2], [24.5, 1.4, 27, 1.4]];
 const HANG = 30.2;                                                  // the ring's centre, above the foot
 const DROPS = [9, 17, 12, 22, 13, 18, 8], SIZES = [0.9, 1.05, 0.95, 1.15, 0.95, 1.05, 0.9];
+const LOOKS = ['a', 'b', 'c'];   // the site colours each fanous by one of three looks
 
 function mount({ stage, svg, read }, value) {
   const bag = disposer();
   let push = value;
+  /* on the site the stage may be any shape (the footer's is a wide strip): as many lanterns as fit, the rope across it */
+  const vb = svg.viewBox.baseVal, wide = vb.width !== 400 || vb.height !== 320;
+  const N = wide ? clamp(Math.round(vb.width / 72), 3, 21) : 7;
   const hs = (i) => (i - (N - 1) / 2) * GAPH;
   const rope = (h) => TOP - SAG * (1 - (h / (GAPH * (N + 0.4) / 2)) ** 2);
   const fans = [];
   for (let i = 0; i < N; i++) {
-    const h = hs(i), k = SIZES[i], pz = rope(h) - DROPS[i];
+    const h = hs(i), k = SIZES[i % 7], pz = rope(h) - DROPS[i % 7];
     fans.push({ i, h, k, pz, top: rope(h), sp: spring(0, { c: 3.2, k: 60, eps: 0.0005 }), door: tween(0), kick: null, drawn: NaN });
   }
 
-  const C = Cam(45, 0.5, 1.62);
-  const ex = [world(-GAPH * 3.9, 0, 0), world(GAPH * 3.9, 0, 0), world(0, 0, POST + 4)];
+  const C = Cam(45, 0.5, wide ? Math.min((vb.width * 0.96) / (GAPH * (N + 0.4)), (vb.height * 0.9) / 118) : 1.62);
+  const ex = [world(-GAPH * (N + 0.8) / 2, 0, 0), world(GAPH * (N + 0.8) / 2, 0, 0), world(0, 0, POST + 4)];
   for (const f of fans) for (const s of [-1, 1]) ex.push(world(f.h + s * 14, 0, f.pz - HANG * f.k - 18), world(f.h + s * 14, 9, f.pz));
-  fit(C, ex, 200, 170);
+  fit(C, ex, wide ? vb.x + vb.width / 2 : 200, wide ? vb.y + vb.height / 2 : 170);
   const P = proj(C);
 
   /* local fanous point (x right, y towards the viewer, z up from the foot) → screen, swung by th about its ring */
@@ -57,12 +61,14 @@ function mount({ stage, svg, read }, value) {
     const pts = [];
     for (const z of [0, POST]) for (let k = 0; k < 16; k++) { const a = (k / 16) * Math.PI * 2; const w = world(h + 1.6 * Math.cos(a), 1.6 * Math.sin(a), z); pts.push(P(w[0], w[1], w[2])); }
     put(el, { sil: poly(hull(pts)), crease: "" });
+    el.g.setAttribute("class", "lt-post");
     const foot = solid(g), fp = [];
+    foot.g.setAttribute("class", "lt-post");
     for (const z of [0, 2]) for (let k = 0; k < 16; k++) { const a = (k / 16) * Math.PI * 2; const w = world(h + 6 * Math.cos(a), 6 * Math.sin(a), z); fp.push(P(w[0], w[1], w[2])); }
     put(foot, { sil: poly(hull(fp)), crease: "" });
     posts.push(w0);
   }
-  const ropeEl = mk("path", { class: "nf" }, g);
+  const ropeEl = mk("path", { class: "nf lt-rope" }, g);
   {
     const pts = [];
     for (let k = 0; k <= 60; k++) { const h = -GAPH * (N + 0.4) / 2 + (k / 60) * GAPH * (N + 0.4), w = world(h, 0, rope(h)); pts.push(P(w[0], w[1], w[2])); }
@@ -71,13 +77,13 @@ function mount({ stage, svg, read }, value) {
     ropeEl.setAttribute("d", open([P(a[0], a[1], a[2])].concat(pts, [P(b[0], b[1], b[2])])));
   }
   for (const f of fans) {
-    f.g = mk("g", {}, g);
-    f.cord = mk("path", { class: "nf lo" }, f.g);
-    f.parts = PROFILE.map(() => solid(f.g));
-    f.ribs = mk("path", { class: "nf lo" }, f.g);
-    f.flame = mk("path", { class: "nf" }, f.g);
-    f.doorEl = mk("path", {}, f.g);                                  // the glass door, opened to light the candle
-    f.hook = mk("path", { class: "nf" }, f.g);
+    f.g = mk("g", { class: "lt lt--" + LOOKS[f.i % 3] }, g);
+    f.cord = mk("path", { class: "nf lo lt-cord" }, f.g);
+    f.parts = PROFILE.map((_, k) => { const el = solid(f.g); el.g.setAttribute("class", k === 2 ? "lt-glass" : "lt-metal"); return el; });
+    f.ribs = mk("path", { class: "nf lo lt-ribs" }, f.g);
+    f.flame = mk("path", { class: "nf lt-flame" }, f.g);
+    f.doorEl = mk("path", { class: "lt-door" }, f.g);                                  // the glass door, opened to light the candle
+    f.hook = mk("path", { class: "nf lt-cord" }, f.g);
   }
 
   const AH = Math.PI / 2 + 0.39, AF = Math.PI / 2 - 0.39, RB = 7.5;
@@ -122,6 +128,7 @@ function mount({ stage, svg, read }, value) {
 
   // Hit: each fanous's resting centre on screen; the nearest in x, if the pointer is level with the lanterns.
   const centre = fans.map((f) => put3(f, 0)(0, 0, 12));
+  stage.dataset.autoStops = JSON.stringify(centre.map((c) => [Math.round(c[0]), Math.round(c[1])]));   // for the site's self-playing lap
   function hit(p) {
     let best = -1, bd = 22;
     for (const f of fans) { const c = centre[f.i], d = Math.abs(p[0] - c[0]); if (d < bd && Math.abs(p[1] - c[1]) < 42) { bd = d; best = f.i; } }
@@ -139,7 +146,7 @@ function mount({ stage, svg, read }, value) {
         if (share > 0) f.kick = { at: now + k * STAGGER, v: dir * push * share * (f.i === a ? 1 : 0.6) };
       }
     } else lit = (N - 1) >> 1;
-    for (const f of fans) { f.parts.forEach((el) => el.sil.classList.toggle("hi", f.i === lit)); tset(f.door, f.i === lit ? 1 : 0, now, 0); f.drawn = NaN; }
+    for (const f of fans) { f.g.classList.toggle("is-lit", f.i === lit); f.parts.forEach((el) => el.sil.classList.toggle("hi", f.i === lit)); tset(f.door, f.i === lit ? 1 : 0, now, 0); f.drawn = NaN; }
     read.textContent = a >= 0 ? "lantern " + (a + 1) : "rest";
     B.wake();
   }

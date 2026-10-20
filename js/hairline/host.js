@@ -34,7 +34,10 @@
       stage.setAttribute('role', 'img');
       stage.setAttribute('aria-label', host.dataset.hlLabel || figure.means);
       host.prepend(stage);
-      var svg = HL.mk('svg', { viewBox: host.dataset.hlViewbox || '0 0 400 320', 'aria-hidden': 'true' }, stage);
+      /* data-hl-fill: the drawing takes the host's own shape (a background strip), 300 units tall */
+      var fillBox = function () { var w = host.clientWidth || 400, h = host.clientHeight || 320; return '0 0 ' + Math.round(300 * w / h) + ' 300'; };
+      var svg = HL.mk('svg', { viewBox: host.hasAttribute('data-hl-fill') ? fillBox() : (host.dataset.hlViewbox || '0 0 400 320'), 'aria-hidden': 'true' }, stage);
+      if (host.hasAttribute('data-hl-fill')) { svg.setAttribute('preserveAspectRatio', 'xMidYMid slice'); stage.style.aspectRatio = 'auto'; stage.style.height = '100%'; }
       var out = host.querySelector('[data-hl-read]');
       var restText = out ? out.textContent : '';
       var text = null;
@@ -54,8 +57,9 @@
       /* data-hl-auto: it plays by itself, again and again while it is on screen, a fresh lap each time;
          a real hand still takes over whenever it comes */
       if (host.hasAttribute('data-hl-auto') && !reduce && 'IntersectionObserver' in window) {
-        var seen = false, lap = null, timer = 0, stops = figure.auto || figure.tour.filter(Boolean);
-        var pick = function () { return stops[Math.floor(Math.random() * stops.length)]; };
+        var seen = false, lap = null, timer = 0;
+        var stopsOf = function () { try { if (stage.dataset.autoStops) return JSON.parse(stage.dataset.autoStops); } catch (e) {} return figure.auto || figure.tour.filter(Boolean); };
+        var pick = function () { var st = stopsOf(); return st[Math.floor(Math.random() * st.length)]; };
         var next = function () {
           clearTimeout(timer);
           timer = setTimeout(function () {
@@ -63,7 +67,22 @@
             next();
           }, 3400 + Math.random() * 2200);
         };
-        new IntersectionObserver(function (es) { seen = es[0].isIntersecting; if (seen) next(); else clearTimeout(timer); }, { threshold: 0.3 }).observe(host);
+        new IntersectionObserver(function (es) { seen = es[0].isIntersecting; if (seen) next(); else clearTimeout(timer); }, { threshold: 0.15 }).observe(host);
+        /* a strip that fills its host is redrawn for the new shape when the width really changes */
+        if (host.hasAttribute('data-hl-fill')) {
+          var lastW = host.clientWidth, rt = 0;
+          window.addEventListener('resize', function () {
+            clearTimeout(rt);
+            rt = setTimeout(function () {
+              if (Math.abs(host.clientWidth - lastW) < 60) return;
+              lastW = host.clientWidth;
+              if (lap) lap.stop();
+              handle.destroy();
+              svg.setAttribute('viewBox', fillBox());
+              handle = host._hl = figure.mount({ stage: stage, svg: svg, read: read }, figure.range[1]);
+            }, 300);
+          });
+        }
         return;
       }
 

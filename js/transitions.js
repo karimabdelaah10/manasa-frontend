@@ -23,7 +23,7 @@ window.Manasa = window.Manasa || {};
     var l = document.querySelector('.loader');
     if (l) return l;
     document.body.insertAdjacentHTML('afterbegin',
-      '<div class="loader" aria-hidden="true"><div class="loader-logo"><i class="loader-frame"></i><i class="loader-art"></i></div>' +
+      '<div class="loader" aria-hidden="true"><div class="symbols-layer" data-symbols="loader" data-density=".7"></div><div class="loader-logo"><i class="loader-frame"></i><i class="loader-art"></i></div>' +
       '<p class="loader-count"><b data-loader-num>٠</b>٪</p></div>');
     return document.querySelector('.loader');
   }

@@ -96,6 +96,7 @@ window.Manasa = window.Manasa || {};
       }
     }
     layer.innerHTML = html;
+    layer._ld = layer.closest('.loader');
     layer._symbols = Array.prototype.map.call(layer.querySelectorAll('.symbol'), function (el) {
       var d = el.dataset;
       return { el: el, path: el.firstChild.firstChild, dur: +d.dur, off: +d.off, ddur: +d.ddur, doff: +d.doff, o: -1, p: -1, tx: '' };
@@ -130,6 +131,8 @@ window.Manasa = window.Manasa || {};
     last = now;
     var t = now / 1000;
     for (var i = 0; i < active.length; i++) {
+      var ld = active[i]._ld;                      /* the loader's layer: only while the loader is up */
+      if (ld && !(ld.classList.contains('is-in') || document.documentElement.classList.contains('is-entering'))) continue;
       var list = active[i]._symbols || [];
       for (var j = 0; j < list.length; j++) {
         var s = list[j];

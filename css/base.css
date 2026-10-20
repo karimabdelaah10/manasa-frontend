@@ -209,3 +209,7 @@ html[data-loader] .loader-logo .pt-layer { display: none; }     /* the child and
 .pt-frame { fill: none; stroke: var(--pt-frame); stroke-width: 3; }
 .pt-lines { fill: none; stroke: #3B2F22; stroke-width: 2; stroke-linecap: round; }
 .pt-shadow { fill: #000; fill-opacity: 0; }
+
+/* النقش المتحرك in the loader: it breaks up the big deep ground, under the logo and the count */
+.loader > .symbols-layer { z-index: 0; }
+.loader-logo, .loader-count { position: relative; z-index: 1; }
