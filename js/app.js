@@ -204,6 +204,20 @@ window.Manasa.Pages = window.Manasa.Pages || {};
     });
   }
 
+  /* النقش المتحرك on the app pages: a calm layer behind the whole page,
+     and the gold one inside every deep panel (sidebar, top bar, heroes). */
+  function addSymbols() {
+    if (!document.querySelector('[data-symbols="page"]')) {
+      document.body.insertAdjacentHTML('afterbegin', '<div class="symbols-layer symbols-layer--light page-symbols" data-symbols="page" data-density=".4" aria-hidden="true"></div>');
+    }
+    document.querySelectorAll('.app-side, .app-top, .c-hero, .p-hero, .stat--deep').forEach(function (el) {
+      if (el.querySelector(':scope > .symbols-layer')) return;
+      el.classList.add('has-symbols');
+      var dens = el.matches('.stat--deep, .app-top') ? '.5' : '.7';
+      el.insertAdjacentHTML('afterbegin', '<div class="symbols-layer" data-symbols="deep" data-density="' + dens + '" aria-hidden="true"></div>');
+    });
+  }
+
   M.App = { shell: shell, BRAND: BRAND };
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -212,6 +226,7 @@ window.Manasa.Pages = window.Manasa.Pages || {};
     var page = document.body.dataset.page;
     if (page && M.Pages[page]) M.Pages[page]();
     M.Brand && M.Brand.init();
+    addSymbols();
     M.Symbols && M.Symbols.init();
     M.Forms && M.Forms.enhance(document);
     counters(); fillRings();

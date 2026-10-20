@@ -60,6 +60,12 @@ window.Manasa = window.Manasa || {};
     if (!document.querySelector('[data-switcher]')) document.body.insertAdjacentHTML('beforeend', SWITCHER);
     M.Brand && M.Brand.init();
     M.Waves && M.Waves.init();
+    /* النقش المتحرك behind the form too, not only on the deep panel */
+    var main = document.querySelector('.auth-main');
+    if (main && !main.querySelector(':scope > .symbols-layer')) {
+      main.classList.add('has-symbols');
+      main.insertAdjacentHTML('afterbegin', '<div class="symbols-layer symbols-layer--light" data-symbols="form" data-density=".45" aria-hidden="true"></div>');
+    }
     M.Symbols && M.Symbols.init();
     M.Forms && M.Forms.enhance(document);
     ripples();

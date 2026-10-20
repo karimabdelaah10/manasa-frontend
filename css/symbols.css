@@ -42,3 +42,14 @@
 @media (prefers-reduced-motion: reduce) {
   .symbols-layer { display: none; }
 }
+
+/* ---------- layers added by script (app pages, forms) ----------
+   inside a panel: under its content, over its background */
+.has-symbols { isolation: isolate; }
+.has-symbols > .symbols-layer { z-index: -1; }
+.auth-main.has-symbols { position: relative; }
+.stat--deep.has-symbols { position: relative; overflow: hidden; }
+/* behind the whole app page: calm, it only shows between the cards */
+.page-symbols { position: fixed; z-index: 0; opacity: .2; }
+body.app .app-main { position: relative; }
+.auth-main > .symbols-layer--light { opacity: .2; }
