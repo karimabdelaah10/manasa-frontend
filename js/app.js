@@ -73,7 +73,8 @@ window.Manasa.Pages = window.Manasa.Pages || {};
     }
     document.addEventListener('click', function (e) {
       if (!e.target.closest('[data-logout]')) return;
-      try { sessionStorage.removeItem('manasa:user'); } catch (x) {}
+      try { sessionStorage.removeItem('manasa:user'); sessionStorage.removeItem('manasa:look'); } catch (x) {}
+      delete document.documentElement.dataset.loader;
       M.leave ? M.leave('login.html') : (location.href = 'login.html');
     });
   }

@@ -15,8 +15,8 @@ window.Manasa.Pages = window.Manasa.Pages || {};
   var ACCOUNTS = [
     { id: '20117', role: 'teacher', phone: '01011112222', name: 'أ. محمود عبد الرحمن' },
     { id: '10230', role: 'student', phone: '01055556666', name: 'عبد الله' },
-    { id: '10234', role: 'student', phone: '01033334444', name: 'يوسف' },
-    { id: '10235', role: 'student', phone: '01033334444', name: 'مريم' }
+    { id: '10234', role: 'student', phone: '01033334444', name: 'يوسف', kid: true },
+    { id: '10235', role: 'student', phone: '01033334444', name: 'مريم', kid: true }
   ];
   var PASSWORD = '123456';
 
@@ -94,7 +94,10 @@ window.Manasa.Pages = window.Manasa.Pages || {};
         if (form.querySelector('[name="password"]').value !== PASSWORD) { showError('كلمة المرور غير صحيحة.'); return; }
 
         var a = found[0];
-        try { sessionStorage.setItem('manasa:user', JSON.stringify(a)); } catch (x) {}
+        /* the loader's logo from now on: the child for a young student, the young man otherwise */
+        var look = a.role === 'student' && a.kid ? 'kids' : 'adults';
+        document.documentElement.dataset.loader = look;
+        try { sessionStorage.setItem('manasa:user', JSON.stringify(a)); sessionStorage.setItem('manasa:look', look); } catch (x) {}
         ok.querySelector('span').textContent = 'أهلًا ' + a.name + '، جارٍ فتح ' + (a.role === 'teacher' ? 'لوحة المعلّم…' : 'صفحتك…');
         reveal(ok, true);
         btn.querySelector('.lbl').textContent = 'تم الدخول';

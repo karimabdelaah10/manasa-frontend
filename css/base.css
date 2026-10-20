@@ -143,23 +143,57 @@ html[data-brand="uns"] [data-brand-only="rattil"] { display: none !important; }
 .brand-text .wordmark--uns { font-size: 1.85rem; margin-bottom: 2px; }
 .seg .wordmark--uns { font-size: 1.25rem; }
 
-/* ---------- page transition (js/transitions.js) ---------- */
-.page-curtain {
+/* ---------- loader + page transition (js/transitions.js) ----------
+   The academy star turns round its still picture (the mushaf with the
+   sound waves; after sign-in the child or the young man), and the count
+   under it says how much of the page has loaded. Leaving a page it rises
+   over it; arriving, it is already there (html.is-entering, set before the
+   first paint) and lifts away once the page is ready. */
+.loader {
   position: fixed; inset: 0; z-index: 300;
-  display: grid; place-items: center;
+  display: grid; place-content: center; justify-items: center; gap: clamp(14px, 3vh, 22px);
   background: var(--c-deep);
   clip-path: inset(100% 0 0 0);
-  transition: clip-path .48s cubic-bezier(.7, 0, .25, 1);
   pointer-events: none;
+  transition: clip-path .5s cubic-bezier(.7, 0, .25, 1);
+  --ld-frame: url(../images/logo/loader/academy-navy-frame.webp);
+  --ld-art: url(../images/logo/loader/academy-navy-art.webp);
 }
-.page-curtain.is-in { clip-path: inset(0 0 0 0); pointer-events: auto; }
-.page-curtain svg { width: 64px; height: 64px; fill: none; stroke: var(--c-accent); stroke-width: 3; animation: spin 1.6s linear infinite; }
-html.is-entering body::after {
-  content: "";
-  position: fixed; inset: 0; z-index: 300;
-  background: var(--c-deep);
-  pointer-events: none;
-  animation: curtain-out .65s cubic-bezier(.7, 0, .25, 1) .05s both;
+.loader::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(50% 45% at 50% 45%, color-mix(in srgb, var(--c-deep-2) 85%, transparent), transparent 75%);
 }
-@keyframes curtain-out { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(0 0 100% 0); } }
+html.is-entering .loader, .loader.is-in { clip-path: inset(0 0 0 0); pointer-events: auto; }
+html.is-entering .loader { transition: none; }
+.loader.is-out { clip-path: inset(0 0 100% 0); transition: clip-path .6s cubic-bezier(.7, 0, .25, 1); }
+.loader-logo { position: relative; width: clamp(170px, 46vw, 230px); aspect-ratio: 1; filter: drop-shadow(0 22px 34px rgba(0, 0, 0, .45)); }
+.loader-logo i { position: absolute; inset: 0; background: center / contain no-repeat; }
+.loader-logo .loader-frame { background-image: var(--ld-frame); animation: ld-turn 1.6s cubic-bezier(.65, 0, .35, 1) infinite; }
+.loader-logo .loader-art { background-image: var(--ld-art); }
+/* the star has eight points: an eighth of a turn lands it back on itself, so each step ends where the next begins */
+@keyframes ld-turn { 0% { transform: rotate(0deg); } 62%, 100% { transform: rotate(45deg); } }
+.loader-count {
+  display: flex; align-items: baseline; gap: 2px;
+  margin: 0;
+  font-family: var(--f-display); font-weight: 700;
+  font-size: clamp(1.5rem, 5vw, 1.9rem); line-height: 1;
+  color: var(--c-accent-on-deep);
+}
+.loader-count b { min-width: 2.2ch; text-align: center; font-weight: inherit; font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .loader-logo .loader-frame { animation: none; } }
+html[data-palette="navy"] .loader { --ld-frame: url(../images/logo/loader/academy-navy-frame.webp); --ld-art: url(../images/logo/loader/academy-navy-art.webp); }
+html[data-palette="navy"][data-loader="kids"] .loader { --ld-frame: url(../images/logo/loader/kids-navy-frame.webp); --ld-art: url(../images/logo/loader/kids-navy-art.webp); }
+html[data-palette="navy"][data-loader="adults"] .loader { --ld-frame: url(../images/logo/loader/adults-navy-frame.webp); --ld-art: url(../images/logo/loader/adults-navy-art.webp); }
+html[data-palette="green"] .loader { --ld-frame: url(../images/logo/loader/academy-green-frame.webp); --ld-art: url(../images/logo/loader/academy-green-art.webp); }
+html[data-palette="green"][data-loader="kids"] .loader { --ld-frame: url(../images/logo/loader/kids-green-frame.webp); --ld-art: url(../images/logo/loader/kids-green-art.webp); }
+html[data-palette="green"][data-loader="adults"] .loader { --ld-frame: url(../images/logo/loader/adults-green-frame.webp); --ld-art: url(../images/logo/loader/adults-green-art.webp); }
+html[data-palette="green-dark"] .loader { --ld-frame: url(../images/logo/loader/academy-green-frame.webp); --ld-art: url(../images/logo/loader/academy-green-art.webp); }
+html[data-palette="green-dark"][data-loader="kids"] .loader { --ld-frame: url(../images/logo/loader/kids-green-frame.webp); --ld-art: url(../images/logo/loader/kids-green-art.webp); }
+html[data-palette="green-dark"][data-loader="adults"] .loader { --ld-frame: url(../images/logo/loader/adults-green-frame.webp); --ld-art: url(../images/logo/loader/adults-green-art.webp); }
+html[data-palette="green-deeper"] .loader { --ld-frame: url(../images/logo/loader/academy-green-frame.webp); --ld-art: url(../images/logo/loader/academy-green-art.webp); }
+html[data-palette="green-deeper"][data-loader="kids"] .loader { --ld-frame: url(../images/logo/loader/kids-green-frame.webp); --ld-art: url(../images/logo/loader/kids-green-art.webp); }
+html[data-palette="green-deeper"][data-loader="adults"] .loader { --ld-frame: url(../images/logo/loader/adults-green-frame.webp); --ld-art: url(../images/logo/loader/adults-green-art.webp); }
+html[data-palette="emerald"] .loader { --ld-frame: url(../images/logo/loader/academy-emerald-frame.webp); --ld-art: url(../images/logo/loader/academy-emerald-art.webp); }
+html[data-palette="emerald"][data-loader="kids"] .loader { --ld-frame: url(../images/logo/loader/kids-emerald-frame.webp); --ld-art: url(../images/logo/loader/kids-emerald-art.webp); }
+html[data-palette="emerald"][data-loader="adults"] .loader { --ld-frame: url(../images/logo/loader/adults-emerald-frame.webp); --ld-art: url(../images/logo/loader/adults-emerald-art.webp); }
 @keyframes spin { to { transform: rotate(360deg); } }

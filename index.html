@@ -14,7 +14,10 @@
         var s = JSON.parse(localStorage.getItem('manasa:brand') || '{}');
         if (s.palette) document.documentElement.dataset.palette = s.palette;
         if (s.brand) document.documentElement.dataset.brand = s.brand;
-        if (sessionStorage.getItem('manasa:nav')) { document.documentElement.classList.add('is-entering'); sessionStorage.removeItem('manasa:nav'); }
+        var nv = sessionStorage.getItem('manasa:nav');
+        if (nv) { document.documentElement.classList.add('is-entering'); document.documentElement.dataset.navFrom = nv; sessionStorage.removeItem('manasa:nav'); }
+        var lk = sessionStorage.getItem('manasa:look');   /* loader logo: kids / adults after sign-in */
+        if (lk) document.documentElement.dataset.loader = lk;
       } catch (e) {}
     })();
   </script>
@@ -26,27 +29,30 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
 
   <link rel="preload" as="image" href="images/logo/academy-navy-nowave.webp">
-  <link rel="stylesheet" href="css/tokens.css?v=202610200710">
-  <link rel="stylesheet" href="css/base.css?v=202610200710">
-  <link rel="stylesheet" href="css/symbols.css?v=202610200710">
-  <link rel="stylesheet" href="css/header.css?v=202610200710">
-  <link rel="stylesheet" href="css/hero.css?v=202610200710">
-  <link rel="stylesheet" href="css/switcher.css?v=202610200710">
-  <link rel="stylesheet" href="css/slogan.css?v=202610200710">
-  <link rel="stylesheet" href="css/sections.css?v=202610200710">
-  <link rel="stylesheet" href="css/programs.css?v=202610200710">
-  <link rel="stylesheet" href="css/how.css?v=202610200710">
-  <link rel="stylesheet" href="css/family.css?v=202610200710">
-  <link rel="stylesheet" href="css/types.css?v=202610200710">
-  <link rel="stylesheet" href="css/teach.css?v=202610200710">
-  <link rel="stylesheet" href="css/faq.css?v=202610200710">
-  <link rel="stylesheet" href="css/cta.css?v=202610200710">
-  <link rel="stylesheet" href="css/hairline.css?v=202610200710">
+  <link rel="stylesheet" href="css/tokens.css?v=202610200716">
+  <link rel="stylesheet" href="css/base.css?v=202610200716">
+  <link rel="stylesheet" href="css/symbols.css?v=202610200716">
+  <link rel="stylesheet" href="css/header.css?v=202610200716">
+  <link rel="stylesheet" href="css/hero.css?v=202610200716">
+  <link rel="stylesheet" href="css/switcher.css?v=202610200716">
+  <link rel="stylesheet" href="css/slogan.css?v=202610200716">
+  <link rel="stylesheet" href="css/sections.css?v=202610200716">
+  <link rel="stylesheet" href="css/programs.css?v=202610200716">
+  <link rel="stylesheet" href="css/how.css?v=202610200716">
+  <link rel="stylesheet" href="css/family.css?v=202610200716">
+  <link rel="stylesheet" href="css/types.css?v=202610200716">
+  <link rel="stylesheet" href="css/teach.css?v=202610200716">
+  <link rel="stylesheet" href="css/faq.css?v=202610200716">
+  <link rel="stylesheet" href="css/cta.css?v=202610200716">
+  <link rel="stylesheet" href="css/hairline.css?v=202610200716">
 </head>
 <body>
+  <!-- loader: the star turns round the still picture; the count shows how much has loaded -->
+  <div class="loader" aria-hidden="true"><div class="loader-logo"><i class="loader-frame"></i><i class="loader-art"></i></div><p class="loader-count"><b data-loader-num>٠</b>٪</p></div>
+
 
   <!-- ===== Shared SVG icons (js/sprite.js) ===== -->
-  <script src="js/sprite.js?v=202610200710"></script>
+  <script src="js/sprite.js?v=202610200716"></script>
 
   <!-- ===== Header ===== -->
   <header class="site-header" data-header>
@@ -548,22 +554,22 @@
   </div>
   <div class="switcher-scrim" data-switcher-scrim></div>
 
-  <script src="js/vendor/gsap.min.js?v=202610200710"></script>
-  <script src="js/vendor/ScrollTrigger.min.js?v=202610200710"></script>
-  <script src="js/vendor/lenis.min.js?v=202610200710"></script>
-  <script src="js/brand.js?v=202610200710"></script>
-  <script src="js/logo-waves.js?v=202610200710"></script>
-  <script src="js/symbols.js?v=202610200710"></script>
-  <script src="js/header.js?v=202610200710"></script>
-  <script src="js/hero.js?v=202610200710"></script>
-  <script src="js/slogan.js?v=202610200710"></script>
-  <script src="js/reveal.js?v=202610200710"></script>
-  <script src="js/programs.js?v=202610200710"></script>
-  <script src="js/sections.js?v=202610200710"></script>
-  <script src="js/transitions.js?v=202610200710"></script>
-  <script src="js/main.js?v=202610200710"></script>
-  <script src="js/hairline/kernel.js?v=202610200710"></script>
-  <script src="js/hairline/host.js?v=202610200710"></script>
-  <script type="module" src="js/hairline/stairs.js?v=202610200710"></script>
+  <script src="js/vendor/gsap.min.js?v=202610200716"></script>
+  <script src="js/vendor/ScrollTrigger.min.js?v=202610200716"></script>
+  <script src="js/vendor/lenis.min.js?v=202610200716"></script>
+  <script src="js/brand.js?v=202610200716"></script>
+  <script src="js/logo-waves.js?v=202610200716"></script>
+  <script src="js/symbols.js?v=202610200716"></script>
+  <script src="js/header.js?v=202610200716"></script>
+  <script src="js/hero.js?v=202610200716"></script>
+  <script src="js/slogan.js?v=202610200716"></script>
+  <script src="js/reveal.js?v=202610200716"></script>
+  <script src="js/programs.js?v=202610200716"></script>
+  <script src="js/sections.js?v=202610200716"></script>
+  <script src="js/transitions.js?v=202610200716"></script>
+  <script src="js/main.js?v=202610200716"></script>
+  <script src="js/hairline/kernel.js?v=202610200716"></script>
+  <script src="js/hairline/host.js?v=202610200716"></script>
+  <script type="module" src="js/hairline/stairs.js?v=202610200716"></script>
 </body>
 </html>
