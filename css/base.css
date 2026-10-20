@@ -197,3 +197,15 @@ html[data-palette="emerald"] .loader { --ld-frame: url(../images/logo/loader/aca
 html[data-palette="emerald"][data-loader="kids"] .loader { --ld-frame: url(../images/logo/loader/kids-emerald-frame.webp); --ld-art: url(../images/logo/loader/kids-emerald-art.webp); }
 html[data-palette="emerald"][data-loader="adults"] .loader { --ld-frame: url(../images/logo/loader/adults-emerald-frame.webp); --ld-art: url(../images/logo/loader/adults-emerald-art.webp); }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- قلبة الصفحة (js/pageturn.js): a page turning over the logo's mushaf ---------- */
+:root { --pt-frame: #B8893A; --pt-edge: #A87B2E; }
+html[data-palette^="green"] { --pt-frame: #C2733A; --pt-edge: #A8622F; }
+.pt-layer { position: absolute; z-index: 1; pointer-events: none; overflow: visible; }
+.loader-logo .pt-layer { inset: 0; width: 100%; height: 100%; }
+html[data-loader] .loader-logo .pt-layer { display: none; }     /* the child and the young man hold their own mushaf */
+.pt-page { fill: #F4EAD3; stroke: var(--pt-edge); stroke-width: 2.5; stroke-linejoin: round; }
+.pt-page.is-back { fill: #EADBB9; }
+.pt-frame { fill: none; stroke: var(--pt-frame); stroke-width: 3; }
+.pt-lines { fill: none; stroke: #3B2F22; stroke-width: 2; stroke-linecap: round; }
+.pt-shadow { fill: #000; fill-opacity: 0; }

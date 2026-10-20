@@ -34,7 +34,7 @@
       stage.setAttribute('role', 'img');
       stage.setAttribute('aria-label', host.dataset.hlLabel || figure.means);
       host.prepend(stage);
-      var svg = HL.mk('svg', { viewBox: '0 0 400 320', 'aria-hidden': 'true' }, stage);
+      var svg = HL.mk('svg', { viewBox: host.dataset.hlViewbox || '0 0 400 320', 'aria-hidden': 'true' }, stage);
       var out = host.querySelector('[data-hl-read]');
       var restText = out ? out.textContent : '';
       var text = null;
@@ -50,6 +50,22 @@
       /* the slider's middle value, as the package's default */
       var handle = figure.mount({ stage: stage, svg: svg, read: read }, figure.range[1]);
       host._hl = handle;
+
+      /* data-hl-auto: it plays by itself, again and again while it is on screen, a fresh lap each time;
+         a real hand still takes over whenever it comes */
+      if (host.hasAttribute('data-hl-auto') && !reduce && 'IntersectionObserver' in window) {
+        var seen = false, lap = null, timer = 0, stops = figure.auto || figure.tour.filter(Boolean);
+        var pick = function () { return stops[Math.floor(Math.random() * stops.length)]; };
+        var next = function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            if (seen && !document.hidden) { if (lap) lap.stop(); var a = pick(), b = pick(); lap = HL.tour(stage, b === a ? [a, null] : [a, b, null], function () {}); }
+            next();
+          }, 3400 + Math.random() * 2200);
+        };
+        new IntersectionObserver(function (es) { seen = es[0].isIntersecting; if (seen) next(); else clearTimeout(timer); }, { threshold: 0.3 }).observe(host);
+        return;
+      }
 
       /* play the lap once when it first shows, unless motion is reduced */
       if (reduce || !figure.tour || !('IntersectionObserver' in window)) return;
