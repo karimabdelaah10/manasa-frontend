@@ -15,6 +15,8 @@
         if (s.brand) document.documentElement.dataset.brand = s.brand;
         var nv = sessionStorage.getItem('manasa:nav');
         if (nv) { document.documentElement.classList.add('is-entering'); document.documentElement.dataset.navFrom = nv; sessionStorage.removeItem('manasa:nav'); }
+        else if (!sessionStorage.getItem('manasa:seen')) document.documentElement.classList.add('is-entering');   /* first open of the site: the loader too */
+        sessionStorage.setItem('manasa:seen', '1');
         var lk = sessionStorage.getItem('manasa:look');   /* loader logo: kids / adults after sign-in */
         if (lk) document.documentElement.dataset.loader = lk;
       } catch (e) {}
@@ -27,19 +29,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
 
-  <link rel="stylesheet" href="css/tokens.css?v=202610200716">
-  <link rel="stylesheet" href="css/base.css?v=202610200716">
-  <link rel="stylesheet" href="css/symbols.css?v=202610200716">
-  <link rel="stylesheet" href="css/header.css?v=202610200716">
-  <link rel="stylesheet" href="css/switcher.css?v=202610200716">
-  <link rel="stylesheet" href="css/forms.css?v=202610200716">
-  <link rel="stylesheet" href="css/auth.css?v=202610200716">
+  <link rel="stylesheet" href="css/tokens.css?v=202610200721">
+  <link rel="stylesheet" href="css/base.css?v=202610200721">
+  <link rel="stylesheet" href="css/symbols.css?v=202610200721">
+  <link rel="stylesheet" href="css/header.css?v=202610200721">
+  <link rel="stylesheet" href="css/switcher.css?v=202610200721">
+  <link rel="stylesheet" href="css/forms.css?v=202610200721">
+  <link rel="stylesheet" href="css/auth.css?v=202610200721">
 </head>
 <body class="auth" data-page="applyTeacher" data-title="التقديم كمعلّم">
   <!-- loader: the star turns round the still picture; the count shows how much has loaded -->
   <div class="loader" aria-hidden="true"><div class="loader-logo"><i class="loader-frame"></i><i class="loader-art"></i></div><p class="loader-count"><b data-loader-num>٠</b>٪</p></div>
 
-  <script src="js/sprite.js?v=202610200716"></script>
+  <script src="js/sprite.js?v=202610200721"></script>
 
   <!-- ===== Brand panel: the steps on desktop, a short top on phones ===== -->
   <aside class="auth-brand">
@@ -288,17 +290,17 @@
     </div>
   </main>
 
-  <script src="js/vendor/gsap.min.js?v=202610200716"></script>
-  <script src="js/vendor/ScrollTrigger.min.js?v=202610200716"></script>
-  <script src="js/brand.js?v=202610200716"></script>
-  <script src="js/logo-waves.js?v=202610200716"></script>
-  <script src="js/symbols.js?v=202610200716"></script>
-  <script src="js/forms.js?v=202610200716"></script>
-  <script src="js/sparkle.js?v=202610200716"></script>
-  <script src="js/wizard.js?v=202610200716"></script>
-  <script src="js/lists.js?v=202610200716"></script>
-  <script src="js/apply-teacher.js?v=202610200716"></script>
-  <script src="js/transitions.js?v=202610200716"></script>
-  <script src="js/auth.js?v=202610200716"></script>
+  <script src="js/vendor/gsap.min.js?v=202610200721"></script>
+  <script src="js/vendor/ScrollTrigger.min.js?v=202610200721"></script>
+  <script src="js/brand.js?v=202610200721"></script>
+  <script src="js/logo-waves.js?v=202610200721"></script>
+  <script src="js/symbols.js?v=202610200721"></script>
+  <script src="js/forms.js?v=202610200721"></script>
+  <script src="js/sparkle.js?v=202610200721"></script>
+  <script src="js/wizard.js?v=202610200721"></script>
+  <script src="js/lists.js?v=202610200721"></script>
+  <script src="js/apply-teacher.js?v=202610200721"></script>
+  <script src="js/transitions.js?v=202610200721"></script>
+  <script src="js/auth.js?v=202610200721"></script>
 </body>
 </html>

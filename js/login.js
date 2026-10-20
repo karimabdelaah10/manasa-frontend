@@ -16,7 +16,9 @@ window.Manasa.Pages = window.Manasa.Pages || {};
     { id: '20117', role: 'teacher', phone: '01011112222', name: 'أ. محمود عبد الرحمن' },
     { id: '10230', role: 'student', phone: '01055556666', name: 'عبد الله' },
     { id: '10234', role: 'student', phone: '01033334444', name: 'يوسف', kid: true },
-    { id: '10235', role: 'student', phone: '01033334444', name: 'مريم', kid: true }
+    { id: '10235', role: 'student', phone: '01033334444', name: 'مريم', kid: true },
+    /* the parent of يوسف and مريم: signs in with the same phone and no student number */
+    { id: 'G501', role: 'guardian', phone: '01033334444', name: 'أحمد محمود', kids: ['10234', '10235'] }
   ];
   var PASSWORD = '123456';
 
@@ -56,9 +58,23 @@ window.Manasa.Pages = window.Manasa.Pages || {};
 
     /* changing role or phone resets the "shared phone" question */
     form.querySelectorAll('[name="role"]').forEach(function (r) {
-      r.addEventListener('change', function () { reveal(shared, false); sharedInput.required = false; reveal(err, false); });
+      r.addEventListener('change', function () { reveal(shared, false); sharedInput.required = false; reveal(err, false); phone.dispatchEvent(new Event('input')); });
     });
-    phone.addEventListener('input', function () { if (!shared.hidden) { reveal(shared, false); sharedInput.required = false; } reveal(err, false); });
+    function guardianOf(num) { return ACCOUNTS.filter(function (a) { return a.role === 'guardian' && a.phone === num; })[0]; }
+    function digits() { return F.toLatin(phone.value).replace(/\D/g, ''); }
+    var sharedNote = shared.querySelector('.notice span'), sharedLabel = shared.querySelector('label'), noteDefault = sharedNote.innerHTML, labelDefault = sharedLabel.textContent;
+    /* a guardian's phone: the student number becomes optional (empty = enter as the guardian) */
+    function guardianMode(on) {
+      sharedNote.innerHTML = on ? 'هذا رقم <b>وليّ أمر</b>. ادخل مباشرةً لتتابع أبناءك، أو اكتب <b>رقم الطالب</b> لتدخل بحساب أحدهم.' : noteDefault;
+      sharedLabel.textContent = on ? 'رقم الطالب (اختياري)' : labelDefault;
+      sharedInput.required = !on;
+    }
+    phone.addEventListener('input', function () {
+      var g = role() === 'student' && guardianOf(digits());
+      if (g) { guardianMode(true); reveal(shared, true); }
+      else if (!shared.hidden) { reveal(shared, false); sharedInput.required = false; guardianMode(false); }
+      reveal(err, false);
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -68,8 +84,13 @@ window.Manasa.Pages = window.Manasa.Pages || {};
       /* find the account */
       var r = role(), found;
       var num = F.toLatin(phone.value).replace(/\D/g, '');
+      var g = r === 'student' && guardianOf(num);
       var matches = ACCOUNTS.filter(function (a) { return a.phone === num && a.role === r; });
-      if (matches.length > 1) {
+      if (g) {
+        var sid = F.toLatin(sharedInput.value.trim());
+        found = sid ? matches.filter(function (a) { return a.id === sid; }) : [g];
+        if (!found.length) { showError('رقم الطالب هذا ليس من أبنائك المسجّلين. راجعه، أو اتركه فارغًا لتدخل كوليّ أمر.'); return; }
+      } else if (matches.length > 1) {
         if (shared.hidden) {
           sharedInput.required = true;
           reveal(shared, true);
@@ -94,16 +115,16 @@ window.Manasa.Pages = window.Manasa.Pages || {};
         if (form.querySelector('[name="password"]').value !== PASSWORD) { showError('كلمة المرور غير صحيحة.'); return; }
 
         var a = found[0];
-        /* the loader's logo from now on: the child for a young student, the young man otherwise */
+        /* the loader's logo from now on: the child for a young student; the young man for a guardian, a teacher or an adult student */
         var look = a.role === 'student' && a.kid ? 'kids' : 'adults';
         document.documentElement.dataset.loader = look;
         try { sessionStorage.setItem('manasa:user', JSON.stringify(a)); sessionStorage.setItem('manasa:look', look); } catch (x) {}
-        ok.querySelector('span').textContent = 'أهلًا ' + a.name + '، جارٍ فتح ' + (a.role === 'teacher' ? 'لوحة المعلّم…' : 'صفحتك…');
+        ok.querySelector('span').textContent = 'أهلًا ' + a.name + '، جارٍ فتح ' + (a.role === 'teacher' ? 'لوحة المعلّم…' : a.role === 'guardian' ? 'صفحة أبنائك…' : 'صفحتك…');
         reveal(ok, true);
         btn.querySelector('.lbl').textContent = 'تم الدخول';
         M.haptic && M.haptic([10, 50, 20]);
         if (!reduce()) gsap.fromTo(btn, { scale: .96 }, { scale: 1, duration: .5, ease: 'back.out(3)' });
-        var dest = a.role === 'teacher' ? 'teacher.html' : 'student.html?id=' + a.id;
+        var dest = a.role === 'teacher' ? 'teacher.html' : 'student.html?id=' + (a.role === 'guardian' ? a.kids[0] : a.id);
         setTimeout(function () { M.leave ? M.leave(dest) : (window.location.href = dest); }, 900);
       }, 700);
     });

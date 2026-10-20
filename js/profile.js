@@ -72,15 +72,18 @@ window.Manasa.Pages = window.Manasa.Pages || {};
   /* ---------------- student ---------------- */
   M.Pages.studentProfile = function () {
     var D = M.Data, F = D.fmt;
-    var u = M.user('student');
-    var id = new URLSearchParams(location.search).get('id') || u.id;
+    var who = M.user();                                   /* a guardian follows the children */
+    var u = who.role === 'guardian' ? who : M.user('student');
+    var id = new URLSearchParams(location.search).get('id') || (u.kids ? u.kids[0] : u.id);
     var s = D.STUDENTS[id] || D.STUDENTS['10234'];
     var c = D.councilOf(s.id), T = D.TEACHER;
     var left = c.batch.size - c.batch.used;
     document.title = s.name + ' — ' + document.title.split(' — ').pop();
 
     M.App.shell({
-      role: 'student', name: s.name, initial: s.short.charAt(0), color: 2, sub: 'طالب · رقم ' + F.ar(s.id),
+      role: 'student',
+      name: u.role === 'guardian' ? u.name : s.name, initial: (u.role === 'guardian' ? u.name : s.short).charAt(0), color: 2,
+      sub: u.role === 'guardian' ? 'وليّ أمر · ' + F.ar(u.kids.length) + ' أبناء' : 'طالب · رقم ' + F.ar(s.id),
       current: 'student.html?id=' + s.id,
       nav: [['student.html?id=' + s.id, 'i-user', 'صفحتي'], ['student.html?id=' + s.id + '#next', 'i-calendar', 'الحلقة القادمة'], ['student.html?id=' + s.id + '#notes', 'i-quote', 'ملاحظات المعلّم'], ['index.html', 'i-home', 'الموقع']],
       tabs: [['student.html?id=' + s.id, 'i-user', 'صفحتي'], ['#next', 'i-calendar', 'القادمة'], ['#notes', 'i-quote', 'الملاحظات'], ['index.html', 'i-home', 'الموقع']]
